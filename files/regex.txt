@@ -1,0 +1,67 @@
+#check if ticked:
+8  OK.EWO
+(?<=\d\s\s)OK\b\.EWO\b
+
+#check Filiale string
+Filiale: KB4 / Bürgerbüro im KVR, Sachgebiet 4
+Filiale\b\:\s.*
+
+	#check for BB String
+	BB-Ausk-StandartSB (Gruppe)
+	(?<=\n)BB\b\-.*
+
+	#check for second BB String also for if exists
+	BB-Ausk-StandartSB (Gruppe)
+	(?<=\+\s)BB\b\-.*
+
+		#check if ticked:
+		8 OKEWO_DB-Editor (Rolle)
+		(?<=\d\s)OKEWO_DB-Editor\b\s\(Rolle\b\)
+
+		#check if ticked:
+		8 AWA: AWA komplett für KVR (Gruppe)
+		(?<=\d\s)AWA:\s+AWA komplett für KVR\b\s\(Gruppe\b\)
+
+		#check if ticked:
+		8 AWA: Sachbearbeiter (Rolle)
+		(?<=\d\s)AWA:\s+Sachbearbeiter\b\s\(Rolle\b\)
+
+		#check if ticked:
+		8 Rückzuweisungen Xmeld (in OK.EWO)
+		(?<=\d\s)Rückzuweisungen Xmeld\b\s\(in OK.EWO\b\)
+
+		#check if ticked:
+		8 Sperrenberechtigung (Rolle: OKEWO_Hodok-Sperre & in OK.EWO: Suchprofilzuordnung)
+		(?<=\d\s)Sperrenberechtigung\b\s\(Rolle: OKEWO_Hodok-Sperre & in OK.EWO: Suchprofilzuordnung\b\)
+
+
+
+#check if ticked:
+8  OK.CASH (Kassenberechtigung)
+(?<=\d\s\s)OK.CASH\b\s\(Kassenberechtigung\)
+
+	#check for behoerde
+	Kasse\b\s\(Behörde\b\)\:.*
+
+		#check if ticked:
+		8 ohne Kassenberechtigung
+		(?<=\d\s)ohne Kassenberechtigung\b
+
+		#check if ticked:
+		8 mit Kassenberechtigung
+		(?<=\d\s)mit Kassenberechtigung\b\:.*
+
+			#check for Kassenberechtigung sonstige Rechte f Kassier/Aufsicht/Buchh (Gruppe)
+			sonstige Rechte f Kassier/Aufsicht/Buchh (Gruppe)
+			sonstige Rechte f Kassier\b\/Aufsicht\b\/Buchh\b\s\(Gruppe\b\)
+
+			#check for Kassenberechtigung KVR-Kassier (Rolle)
+			KVR-Kassier (Rolle)
+			KVR\b\-Kassier\b\s\(Rolle\b\)
+
+			#check for Kassenberechtigung KVR-Kassenleitung (Rolle)
+			Kassenberechtigung KVR-Kassenleitung (Rolle)
+			Kassenberechtigung KVR-Kassenleitung\b\s\(Rolle\b\)
+
+13 bool
+4 str
