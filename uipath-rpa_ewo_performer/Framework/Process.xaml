@@ -1,0 +1,656 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_bool_testMode" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_Str_Acct" Type="InArgument(x:String)" />
+    <x:Property Name="in_Str_Mailinbox" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.in_Str_Acct>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_Str_Acct>
+  <this:Process.in_Str_Mailinbox>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_Str_Mailinbox>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1208,641</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="100">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business.ForEachMail</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="866.4000000000001,7370.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_Mail_ID" />
+      <Variable x:TypeArguments="x:String" Name="str_Date" />
+      <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
+      <Variable x:TypeArguments="x:String" Name="mail_body" />
+      <Variable x:TypeArguments="x:String" Name="mail_subject" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Mail_messages" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="516.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="516.8,274.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Mail_ID]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_ID").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[mail_subject]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_Subject").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Date]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_Date").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[mail_body]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Body").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[LDAP_Kennung]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(mail_body, "\b[A-Z][a-zäöüß]+\.[A-Z][a-zäöüß]+").Value.ToLower]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="516.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Daten aus Mail: &quot; + str_Mail_ID + &quot; &quot;+ LDAP_Kennung + &quot; &quot; + mail_subject]" />
+    <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Str_Acct]" ConnectionMode="LegacyConfiguration" DisplayName="Get Outlook Mail Messages" Filter="@SQL=urn:schemas:httpmail:subject LIKE '%SCTASK%'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="516.8,122.4" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[in_Str_Mailinbox]" MarkAsRead="False" Messages="[Mail_messages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="100" UseISConnection="False">
+      <ui:GetOutlookMailMessages.ConnectionDetailsBackupSlot>
+        <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
+          <usau:BackupSlot.BackupValues>
+            <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </ui:GetOutlookMailMessages.ConnectionDetailsBackupSlot>
+    </ui:GetOutlookMailMessages>
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="516.8,408" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Mail_messages]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="snm:MailMessage">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentMailMessage" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,277.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:SaveMailAttachments Attachments="{x:Null}" ResourceAttachments="{x:Null}" DisplayName="Save Email Attachments" ExcludeInlineAttachments="False" FolderPath="[&quot;inbox\&quot;+System.Text.RegularExpressions.Regex.Match(currentMailMessage.Subject, &quot;SCTASK\d+&quot;).Value]" sap:VirtualizedContainerService.HintSize="382.4,217.6" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentMailMessage]" OverwriteExisting="False" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Sequence DisplayName="getting data from PDF" sap:VirtualizedContainerService.HintSize="516.8,3459.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="filepath_and_name" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="467.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[filepath_and_name]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Directory.GetFiles("inbox\"+mail_subject,"*.pdf").First()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="467.2,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;##########&quot; + vbCr +&#xA;&quot;checking PDF for information&quot; + vbCr +&#xA;&quot;from File: &quot; + filepath_and_name + vbCr +&#xA;&quot;##########&quot;]" />
+      <Sequence DisplayName="check for bools and strs" sap:VirtualizedContainerService.HintSize="467.2,3027.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="pdftext" />
+          <Variable x:TypeArguments="x:String" Name="firstname" />
+          <Variable x:TypeArguments="x:String" Name="lastname" />
+          <Variable x:TypeArguments="x:String" Name="anrede" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ok_ewo" />
+          <Variable x:TypeArguments="x:String" Name="get_filiale" />
+          <Variable x:TypeArguments="x:String" Name="get_filiale_krzl" />
+          <Variable x:TypeArguments="x:String" Name="get_first_BB" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_if_sec_BB_exists" />
+          <Variable x:TypeArguments="x:String" Name="get_sec_BB" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_db_editor" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_awa_koplett_kvr" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_awa_sachbearbeiter" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_rueckzuweisungen" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_sperrenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ok_cash" />
+          <Variable x:TypeArguments="x:String" Name="get_behoerde" />
+          <Variable x:TypeArguments="x:String" Name="get_SGNr" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ohne_kassenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_mit_kassenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_sonstige_rechte" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_kassenberechtigung_kassier" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_kassenberechtigung_kassenleitung" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath_and_name]" sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[pdftext]" />
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[pdftext]" />
+        <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[firstname]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Vorname\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[lastname]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Familienname\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[anrede]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Geschlecht\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,84.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,294" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_25">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[firstname_lowercase]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[firstname.ToLower]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[lastname_lowercase]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[lastname.ToLower]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[benutzer]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[firstname_lowercase+"."+lastname_lowercase]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
+        <Assign DisplayName="ticked: EWO" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ok_ewo]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext, "(?&lt;=\d\s{2}OK\s)EWO\b").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Filiale" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_filiale]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Filiale\b\:\s).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Filiale" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_filiale_krzl]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Filiale\b\:\s).*(keine\b|(?=\s\/\s)|(?=\/Bürgerbüro))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get BB Value" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_first_BB]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\n)BB\b\-.*(?=\s\(Gruppe\))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Check if sec BB exsists" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_if_sec_BB_exists]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\+\s)BB\b\-.*").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get second BB Value" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_sec_BB]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\+\s)BB\b\-.*(?=\s\(Gruppe\))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked DB-Editor" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_db_editor]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)OKEWO_DB-Editor\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked AWA komplett" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_awa_koplett_kvr]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)AWA:\s+AWA komplett für KVR\b\s\(Gruppe\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked AWA Sachbearbeiter" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_awa_sachbearbeiter]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)AWA:\s+Sachbearbeiter\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked Rückzuweisungen" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_rueckzuweisungen]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)Rückzuweisungen Xmeld\b\s\(in OK.EWO\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked Sperrenberechtigung" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_sperrenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)Sperrenberechtigung").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked OK.CASH" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ok_cash]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s\s)OK.CASH\b\s\(Kassenberechtigung\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Behörde" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_behoerde]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"Kasse\b\s\(Behörde\b\)\:.*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get SGNr" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_SGNr]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(get_behoerde,"(?&lt;=(Kasse\s\(Behörde\)\:\sII\/)\b)\d\d\d").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked ohne Kassenberechtigung" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_20">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ohne_kassenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)ohne Kassenberechtigung\b").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked mit Kassenberechtigung" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_mit_kassenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)mit Kassenberechtigung\b\:.*").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for sonstige Rechte" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_sonstige_rechte]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"sonstige Rechte f Kassier\b\/Aufsicht\b\/Buchh\b\s\(Gruppe\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for KVR-Kassier" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_kassenberechtigung_kassier]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"KVR\b\-Kassier\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for KVR-Kassenleitung" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_kassenberechtigung_kassenleitung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"KVR-Kassenleitung\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Vorname: &quot;+ firstname+ vbCrLf +&#xA;&quot;Familienname: &quot;+ lastname+ vbCrLf +&#xA;&quot;OK.EWO ticked: &quot;+ ticked_ok_ewo.ToString + vbCrLf +&#xA;&quot;Filiale: &quot; + get_filiale + vbCrLf +&#xA;&quot;First BB String: &quot; + get_first_BB + vbCrLf +&#xA;&quot;Second BB existis: &quot; + check_if_sec_BB_exists.ToString + vbCrLf +&#xA;&quot;Second BB String: &quot; + get_sec_BB + vbCrLf +&#xA;&quot;DB-Editor ticked: &quot; + ticked_db_editor.ToString + vbCrLf +&#xA;&quot;AWA: AWA komplett für KVR ticked: &quot; + ticked_awa_koplett_kvr.ToString + vbCrLf +&#xA;&quot;AWA: Sachbearbeiter ticked: &quot; + ticked_awa_sachbearbeiter.ToString + vbCrLf +&#xA;&quot;Rückzuweisungen ticked: &quot; + ticked_rueckzuweisungen.ToString + vbCrLf +&#xA;&quot;Sperrenberechtigung ticked: &quot; + ticked_sperrenberechtigung.ToString + vbCrLf +&#xA;&quot;OK.CASH ticked: &quot; + ticked_ok_cash.ToString + vbCrLf +&#xA;&quot;Get Behörde: &quot; + get_behoerde + vbCrLf +&#xA;&quot;Ohne Kassenbenachrichtigung ticked: &quot; + ticked_ohne_kassenberechtigung.ToString + vbCrLf +&#xA;&quot;Mit Kassenbenachrichtigung ticked: &quot; + ticked_mit_kassenberechtigung.ToString + vbCrLf +&#xA;&quot;Sonstige Rechte selected: &quot; + check_sonstige_rechte.ToString + vbCrLf +&#xA;&quot;KVR-Kassier selected: &quot; + check_kassenberechtigung_kassier.ToString + vbCrLf +&#xA;&quot;KVR-Kassenleitung selected: &quot; + check_kassenberechtigung_kassenleitung.ToString]" />
+      </Sequence>
+      <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="467.2,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[filepath_and_name]" />
+    </Sequence>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="516.8,2658.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="483.2,2344" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="get_user_row">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:Int32" />
+                </Variable.Default>
+              </Variable>
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="449.6,2282.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="exist_LDAPEintrag" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Systemeinstellung alt E(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="Cu48Df_Kak-GcLV7IzO0Bw" DesignTimeRectangle="23, 822, 44, 44" DesignTimeScaleFactor="0.800000011920929" ElementType="Button" FullSelectorArgument="&lt;java name='Systemeinstellung alt E' role='push button' /&gt;" Guid="b3ceb1ef-04e0-4471-8ec8-0dde08f546c6" InformativeScreenshot="1b1a48e8357cacf486eafe6220693012.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/dWBBYRB1MEiMEVuCxiF4Sw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzerverwaltung (kla…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="egH7Q9UvSUmvHzXQIDvHyw" DesignTimeRectangle="88, 183, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;" FuzzySelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' check:text='Benutzerverwaltung (klassisch)' /&gt;" Guid="1b6b8a81-29c8-43a8-8204-c08a9644ee83" InformativeScreenshot="7e4569e098d61209e4f1109556eb19e6.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/CPJmnulq6UeviT-I7REBKw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Authentifizierung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="XyJroo0cjUSOoDERP5z5ww" DesignTimeRectangle="88, 208, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;" FuzzySelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' check:text='Authentifizierung' /&gt;" Guid="5974a940-1aa9-444e-8717-83f89366c907" InformativeScreenshot="3f58bede2e44f60b7bfba44cdd41d330.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/_LBmZfcemU6Q95I5cmipIg" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="bVa4wMqWkkOMi3joxFaSKg" DesignTimeRectangle="88, 233, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;&lt;java name='Benutzer' role='panel' /&gt;" Guid="bab3f8ed-ebfe-4ab4-9978-967090a3c8cc" InformativeScreenshot="0f532509cba5419e07549ec472d5cbbc.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/WiqTMane3kGU8ZVkfjmk9w" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="cQ0dZOhIPkGeaXt_vfRHZg" DesignTimeRectangle="681, 203, 392, 34" DesignTimeScaleFactor="0.800000011920929" ElementType="InputBox" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='text' /&gt;" Guid="c139ab89-52d4-4da2-8ffe-e331d327aa68" InformativeScreenshot="c611b49cb31d4b0f403586a1d73f4d91.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/t9e8VOJQ9UarMYfgNlgQRQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzername'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="M-M79r8HS0uiN_Q9xebMNA" DesignTimeRectangle="1073, 203, 26, 34" ElementType="Button" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Benutzername' role='panel' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;java name='Benutzername' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' check:text='Benutzername' /&gt;" Guid="712e0f1e-1372-4184-a70a-69eb17d81cd4" InformativeScreenshot="263ac3d6d4c0aea516c87504925bcdf1.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/msvKfLW2Pk--tBoFgLScfw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/ SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NGetAttributeGeneric x:TypeArguments="x:Int32" Attribute="tableRow" DisplayName="Get Attribute 'korbinian.zacherl'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,240" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" Result="[get_user_row]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NGetAttributeGeneric.Target>
+                  <uix:TargetAnchorable ContentHash="lM4FaeMU30mYX9lcDEFFbA" DesignTimeRectangle="588, 284, 352, 26" DesignTimeScaleFactor="0.800000011920929" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;" FuzzySelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' check:text='korbinian.zacherl' /&gt;" Guid="103742e6-13bb-416e-83b9-305eaa2a1a35" InformativeScreenshot="158abcd2e621019e42433ea0c704846d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/UO3mq83UUU60yy1BwNtS9A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NGetAttributeGeneric.Target>
+              </uix:NGetAttributeGeneric>
+              <uix:NGetAttributeGeneric x:TypeArguments="x:Int32" Attribute="tableRow" DisplayName="Get Row Number" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,240" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_3" Result="[get_user_row]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NGetAttributeGeneric.Target>
+                  <uix:TargetAnchorable ContentHash="lM4FaeMU30mYX9lcDEFFbA" DesignTimeRectangle="588, 284, 352, 26" DesignTimeScaleFactor="0.800000011920929" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;" FuzzySelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' check:text='korbinian.zacherl' /&gt;" Guid="103742e6-13bb-416e-83b9-305eaa2a1a35" InformativeScreenshot="158abcd2e621019e42433ea0c704846d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/UO3mq83UUU60yy1BwNtS9A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NGetAttributeGeneric.Target>
+              </uix:NGetAttributeGeneric>
+              <uix:NCheckElement DelayBefore="0" DisplayName="Check Element" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,189.6" sap2010:WorkflowViewState.IdRef="NCheckElement_1" Result="[exist_LDAPEintrag]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NCheckElement.Target>
+                  <uix:TargetAnchorable ContentHash="8vHTuDI2v0Ks8O0CAPPV-A" DesignTimeRectangle="681, 203, 392, 34" ElementType="InputBox" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Benutzername' role='panel' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;java name='Benutzername' role='text' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;" Guid="206b40aa-d56e-4f1a-98f0-58264a630942" InformativeScreenshot="d6d77d081e18884e8512d832e306ab8d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/mpDHl15D3kGkIsN-bw_pbg" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                </uix:NCheckElement.Target>
+              </uix:NCheckElement>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,115.2" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Existiert der Eintrag: &quot; +exist_LDAPEintrag.ToString]" />
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-10, -1080, 1936, 1056" ContentHash="cIwySb03n0yoVULwKpUFvw" FilePath="C:\okprg\okewo\java\jre_64\bin\javaw.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIdSURBVFhHzZbLbtpQEIaxcRqpqkTURddV3iJv2oaLHbLqos+SRUSiRAEa4pAoFW0XtASw/WeOoRWY30BOjTSDPiE+HebMuXigVPLvoBoqNUGlJqjUBJWaoFITVGqCSk1QqQkqc3D8nryHGW8+b4sZb3IYFnOsgcoc9oIufmGCn0DKQHjYgkfBjB9GwJfOd3jNFtx/BW+AyhVCuI0Qw2Qq0xQTP2LArW6xk1QSvOAWyTx5ETE2TBM61xJUEtzGNWJTYkFVygYiSWK51/coBW06ZwqVORwenyGOxojlqKPMayouxjNhLGuaYBLzlX2oXcKR68PmS6EyB69mVvskmCdaaCzj1R4J/ZRSsz8vaTnefzqX7665i1Qu4Prf4NV7csQmyYM1jm+e5dWoVFuyYOsdDFGWu4dkiHj8Z57y9WEON+/qVqoXlgUGPezXnzCCuVvSwHYU1gWWT0NpA7/naXYX1ke8Vw9l3wrqKWvCukBXLna2vmfh7ek9ys32K+nA87uzJJmwP2Jf2kKmQNP9nZMOHb8J96Q9S5IJ6wLdxmqBZgc9eXjY+I3ILrL4jzbTk/qK+3OQF9YFOv51eqS7Dvs+KE36Y3COaCo9MFHYB/9y9PUSo2g0K9LcyYKpHN/ID0KXzp1C5SJBH++qA1Q+X0myFg7k30eRvKkNpMAbPreBSk1QqQkqNUGlJqjUBJWaoFITVGqCSk1QqQkq1XCHF+6QkjMCUgz5AAAAAElFTkSuQmCC" InformativeScreenshot="c3848de9ff1d47ebbc27501b078ec530.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/k_tKNZNlSE2QULoCqivMVw" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
