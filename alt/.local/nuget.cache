@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fdLO44QSFtM=",
+  "dgSpecHash": "D76hxvrnHxo=",
   "success": false,
-  "projectFilePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\.local\\",
+  "projectFilePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\alt\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\korbinian.zacherl\\.nuget\\packages\\azure.core\\1.18.0\\azure.core.1.18.0.nupkg.sha512",
     "C:\\Users\\korbinian.zacherl\\.nuget\\packages\\bitmiracle.docotic.pdf\\9.6.17981-dev\\bitmiracle.docotic.pdf.9.6.17981-dev.nupkg.sha512",
@@ -305,7 +305,7 @@
     {
       "code": "NU1202",
       "level": "Error",
-      "filePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\.local",
+      "filePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\alt\\.local",
       "message": "Package CommandPrompt.Activities 1.0.7 is not compatible with net8.0-windows7.0 (.NETCoreApp,Version=v8.0). Package CommandPrompt.Activities 1.0.7 supports: net (.NETFramework,Version=v0.0)",
       "libraryId": "CommandPrompt.Activities",
       "targetGraphs": [
@@ -315,7 +315,7 @@
     {
       "code": "NU1202",
       "level": "Error",
-      "filePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\.local",
+      "filePath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\alt\\.local",
       "message": "Package CommandPrompt.Activities 1.0.7 is not compatible with net8.0-windows7.0 (.NETCoreApp,Version=v8.0) / win-x64. Package CommandPrompt.Activities 1.0.7 supports: net (.NETFramework,Version=v0.0)",
       "libraryId": "CommandPrompt.Activities",
       "targetGraphs": [

@@ -1,0 +1,1350 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_bool_testMode" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_Str_Acct" Type="InArgument(x:String)" />
+    <x:Property Name="in_Str_Mailinbox" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.in_Str_Acct>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_Str_Acct>
+  <this:Process.in_Str_Mailinbox>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_Str_Mailinbox>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1208,641</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="100">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business.ForEachMail</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1252.2,12203" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_Mail_ID" />
+      <Variable x:TypeArguments="x:String" Name="str_Date" />
+      <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
+      <Variable x:TypeArguments="x:String" Name="mail_body" />
+      <Variable x:TypeArguments="x:String" Name="mail_subject" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Mail_messages" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="554,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="554,272" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Mail_ID]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_ID").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[mail_subject]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_Subject").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Date]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Mail_Date").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[mail_body]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Body").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[LDAP_Kennung]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(mail_body, "\b[A-Z][a-zäöüß]+\.[A-Z][a-zäöüß]+").Value.ToLower]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="554,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Daten aus Mail: &quot; + str_Mail_ID + &quot; &quot;+ LDAP_Kennung + &quot; &quot; + mail_subject]" />
+    <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Str_Acct]" ConnectionMode="LegacyConfiguration" DisplayName="Get Outlook Mail Messages" Filter="@SQL=urn:schemas:httpmail:subject LIKE '%SCTASK%'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="554,122" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[in_Str_Mailinbox]" MarkAsRead="False" Messages="[Mail_messages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="100" UseISConnection="False">
+      <ui:GetOutlookMailMessages.ConnectionDetailsBackupSlot>
+        <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
+          <usau:BackupSlot.BackupValues>
+            <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </ui:GetOutlookMailMessages.ConnectionDetailsBackupSlot>
+    </ui:GetOutlookMailMessages>
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="554,405" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Mail_messages]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="snm:MailMessage">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentMailMessage" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,275" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:SaveMailAttachments Attachments="{x:Null}" ResourceAttachments="{x:Null}" DisplayName="Save Email Attachments" ExcludeInlineAttachments="False" FolderPath="[&quot;inbox\&quot;+System.Text.RegularExpressions.Regex.Match(currentMailMessage.Subject, &quot;SCTASK\d+&quot;).Value]" sap:VirtualizedContainerService.HintSize="382,215" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentMailMessage]" OverwriteExisting="False" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Sequence DisplayName="getting data from PDF" sap:VirtualizedContainerService.HintSize="554,3437" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="filepath_and_name" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="468,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[filepath_and_name]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Directory.GetFiles("inbox\"+mail_subject,"*.pdf").First()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="468,122" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;##########&quot; + vbCr +&#xA;&quot;checking PDF for information&quot; + vbCr +&#xA;&quot;from File: &quot; + filepath_and_name + vbCr +&#xA;&quot;##########&quot;]" />
+      <Sequence DisplayName="check for bools and strs" sap:VirtualizedContainerService.HintSize="468,3006" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="pdftext" />
+          <Variable x:TypeArguments="x:String" Name="firstname" />
+          <Variable x:TypeArguments="x:String" Name="lastname" />
+          <Variable x:TypeArguments="x:String" Name="anrede" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ok_ewo" />
+          <Variable x:TypeArguments="x:String" Name="get_filiale" />
+          <Variable x:TypeArguments="x:String" Name="get_filiale_krzl" />
+          <Variable x:TypeArguments="x:String" Name="get_first_BB" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_if_sec_BB_exists" />
+          <Variable x:TypeArguments="x:String" Name="get_sec_BB" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_db_editor" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_awa_koplett_kvr" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_awa_sachbearbeiter" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_rueckzuweisungen" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_sperrenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ok_cash" />
+          <Variable x:TypeArguments="x:String" Name="get_behoerde" />
+          <Variable x:TypeArguments="x:String" Name="get_SGNr" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_ohne_kassenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="ticked_mit_kassenberechtigung" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_sonstige_rechte" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_kassenberechtigung_kassier" />
+          <Variable x:TypeArguments="x:Boolean" Name="check_kassenberechtigung_kassenleitung" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath_and_name]" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[pdftext]" />
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[pdftext]" />
+        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[firstname]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Vorname\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[lastname]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Familienname\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[anrede]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Geschlecht\b\:\s+).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,294" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_25">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[firstname_lowercase]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[firstname.ToLower]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[lastname_lowercase]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[lastname.ToLower]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[benutzer]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[firstname_lowercase+"."+lastname_lowercase]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
+        <Assign DisplayName="ticked: EWO" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ok_ewo]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext, "(?&lt;=\d\s{2}OK\s)EWO\b").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Filiale" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_filiale]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Filiale\b\:\s).*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Filiale" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_filiale_krzl]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=Filiale\b\:\s).*(keine\b|(?=\s\/\s)|(?=\/Bürgerbüro))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get BB Value" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_first_BB]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\n)BB\b\-.*(?=\s\(Gruppe\))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Check if sec BB exsists" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_if_sec_BB_exists]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\+\s)BB\b\-.*").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get second BB Value" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_sec_BB]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\+\s)BB\b\-.*(?=\s\(Gruppe\))").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked DB-Editor" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_db_editor]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)OKEWO_DB-Editor\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked AWA komplett" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_12">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_awa_koplett_kvr]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)AWA:\s+AWA komplett für KVR\b\s\(Gruppe\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked AWA Sachbearbeiter" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_awa_sachbearbeiter]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)AWA:\s+Sachbearbeiter\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked Rückzuweisungen" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_rueckzuweisungen]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)Rückzuweisungen Xmeld\b\s\(in OK.EWO\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked Sperrenberechtigung" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_16">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_sperrenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)Sperrenberechtigung").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked OK.CASH" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_17">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ok_cash]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s\s)OK.CASH\b\s\(Kassenberechtigung\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get Behörde" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_18">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_behoerde]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdftext,"Kasse\b\s\(Behörde\b\)\:.*").ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Get SGNr" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_19">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[get_SGNr]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(get_behoerde,"(?&lt;=(Kasse\s\(Behörde\)\:\sII\/)\b)\d\d\d").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked ohne Kassenberechtigung" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_20">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_ohne_kassenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)ohne Kassenberechtigung\b").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="ticked mit Kassenberechtigung" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_21">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[ticked_mit_kassenberechtigung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"(?&lt;=\d\s)mit Kassenberechtigung\b\:.*").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for sonstige Rechte" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_22">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_sonstige_rechte]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"sonstige Rechte f Kassier\b\/Aufsicht\b\/Buchh\b\s\(Gruppe\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for KVR-Kassier" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_23">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_kassenberechtigung_kassier]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"KVR\b\-Kassier\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="check for KVR-Kassenleitung" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_24">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[check_kassenberechtigung_kassenleitung]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.Match(pdftext,"KVR-Kassenleitung\b\s\(Rolle\b\)").Success]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Vorname: &quot;+ firstname+ vbCrLf +&#xA;&quot;Familienname: &quot;+ lastname+ vbCrLf +&#xA;&quot;OK.EWO ticked: &quot;+ ticked_ok_ewo.ToString + vbCrLf +&#xA;&quot;Filiale: &quot; + get_filiale + vbCrLf +&#xA;&quot;First BB String: &quot; + get_first_BB + vbCrLf +&#xA;&quot;Second BB existis: &quot; + check_if_sec_BB_exists.ToString + vbCrLf +&#xA;&quot;Second BB String: &quot; + get_sec_BB + vbCrLf +&#xA;&quot;DB-Editor ticked: &quot; + ticked_db_editor.ToString + vbCrLf +&#xA;&quot;AWA: AWA komplett für KVR ticked: &quot; + ticked_awa_koplett_kvr.ToString + vbCrLf +&#xA;&quot;AWA: Sachbearbeiter ticked: &quot; + ticked_awa_sachbearbeiter.ToString + vbCrLf +&#xA;&quot;Rückzuweisungen ticked: &quot; + ticked_rueckzuweisungen.ToString + vbCrLf +&#xA;&quot;Sperrenberechtigung ticked: &quot; + ticked_sperrenberechtigung.ToString + vbCrLf +&#xA;&quot;OK.CASH ticked: &quot; + ticked_ok_cash.ToString + vbCrLf +&#xA;&quot;Get Behörde: &quot; + get_behoerde + vbCrLf +&#xA;&quot;Ohne Kassenbenachrichtigung ticked: &quot; + ticked_ohne_kassenberechtigung.ToString + vbCrLf +&#xA;&quot;Mit Kassenbenachrichtigung ticked: &quot; + ticked_mit_kassenberechtigung.ToString + vbCrLf +&#xA;&quot;Sonstige Rechte selected: &quot; + check_sonstige_rechte.ToString + vbCrLf +&#xA;&quot;KVR-Kassier selected: &quot; + check_kassenberechtigung_kassier.ToString + vbCrLf +&#xA;&quot;KVR-Kassenleitung selected: &quot; + check_kassenberechtigung_kassenleitung.ToString]" />
+      </Sequence>
+      <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="468,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[filepath_and_name]" />
+    </Sequence>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="554,7526" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="520,7212" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Default="0" Name="get_user_row" />
+              <Variable x:TypeArguments="x:Boolean" Name="exist_LDAPEintrag" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="486,2287" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Systemeinstellung alt E(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="Cu48Df_Kak-GcLV7IzO0Bw" DesignTimeRectangle="23, 822, 44, 44" DesignTimeScaleFactor="0.800000011920929" ElementType="Button" FullSelectorArgument="&lt;java name='Systemeinstellung alt E' role='push button' /&gt;" Guid="b3ceb1ef-04e0-4471-8ec8-0dde08f546c6" InformativeScreenshot="1b1a48e8357cacf486eafe6220693012.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/dWBBYRB1MEiMEVuCxiF4Sw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzerverwaltung (kla…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="egH7Q9UvSUmvHzXQIDvHyw" DesignTimeRectangle="88, 183, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;" FuzzySelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' check:text='Benutzerverwaltung (klassisch)' /&gt;" Guid="1b6b8a81-29c8-43a8-8204-c08a9644ee83" InformativeScreenshot="7e4569e098d61209e4f1109556eb19e6.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/CPJmnulq6UeviT-I7REBKw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Authentifizierung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="XyJroo0cjUSOoDERP5z5ww" DesignTimeRectangle="88, 208, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;" FuzzySelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' check:text='Authentifizierung' /&gt;" Guid="5974a940-1aa9-444e-8717-83f89366c907" InformativeScreenshot="3f58bede2e44f60b7bfba44cdd41d330.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/_LBmZfcemU6Q95I5cmipIg" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="bVa4wMqWkkOMi3joxFaSKg" DesignTimeRectangle="88, 233, 284, 25" DesignTimeScaleFactor="0.800000011920929" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;&lt;java name='Benutzer' role='panel' /&gt;" Guid="bab3f8ed-ebfe-4ab4-9978-967090a3c8cc" InformativeScreenshot="0f532509cba5419e07549ec472d5cbbc.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/WiqTMane3kGU8ZVkfjmk9w" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,286" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="cQ0dZOhIPkGeaXt_vfRHZg" DesignTimeRectangle="681, 203, 392, 34" DesignTimeScaleFactor="0.800000011920929" ElementType="InputBox" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='text' /&gt;" Guid="c139ab89-52d4-4da2-8ffe-e331d327aa68" InformativeScreenshot="c611b49cb31d4b0f403586a1d73f4d91.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/t9e8VOJQ9UarMYfgNlgQRQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzername'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="M-M79r8HS0uiN_Q9xebMNA" DesignTimeRectangle="1073, 203, 26, 34" ElementType="Button" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Benutzername' role='panel' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;java name='Benutzername' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' check:text='Benutzername' /&gt;" Guid="712e0f1e-1372-4184-a70a-69eb17d81cd4" InformativeScreenshot="263ac3d6d4c0aea516c87504925bcdf1.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/msvKfLW2Pk--tBoFgLScfw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/ SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+              <uix:NGetAttributeGeneric x:TypeArguments="x:Int32" Attribute="tableRow" DisplayName="Get Attribute 'korbinian.zacherl'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,239" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" Result="[get_user_row]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NGetAttributeGeneric.Target>
+                  <uix:TargetAnchorable ContentHash="lM4FaeMU30mYX9lcDEFFbA" DesignTimeRectangle="588, 284, 352, 26" DesignTimeScaleFactor="0.800000011920929" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;" FuzzySelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' check:text='korbinian.zacherl' /&gt;" Guid="103742e6-13bb-416e-83b9-305eaa2a1a35" InformativeScreenshot="158abcd2e621019e42433ea0c704846d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/UO3mq83UUU60yy1BwNtS9A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NGetAttributeGeneric.Target>
+              </uix:NGetAttributeGeneric>
+              <uix:NGetAttributeGeneric x:TypeArguments="x:Int32" Attribute="tableRow" DisplayName="Get Row Number" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,239" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_3" Result="[get_user_row]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NGetAttributeGeneric.Target>
+                  <uix:TargetAnchorable ContentHash="lM4FaeMU30mYX9lcDEFFbA" DesignTimeRectangle="588, 284, 352, 26" DesignTimeScaleFactor="0.800000011920929" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;" FuzzySelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' check:text='korbinian.zacherl' /&gt;" Guid="103742e6-13bb-416e-83b9-305eaa2a1a35" InformativeScreenshot="158abcd2e621019e42433ea0c704846d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/UO3mq83UUU60yy1BwNtS9A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                </uix:NGetAttributeGeneric.Target>
+              </uix:NGetAttributeGeneric>
+              <uix:NCheckElement DelayBefore="0" DisplayName="Check Element" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,189" sap2010:WorkflowViewState.IdRef="NCheckElement_1" Result="[exist_LDAPEintrag]" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NCheckElement.Target>
+                  <uix:TargetAnchorable ContentHash="8vHTuDI2v0Ks8O0CAPPV-A" DesignTimeRectangle="681, 203, 392, 34" ElementType="InputBox" FullSelectorArgument="&lt;java name='Benutzername' role='panel' /&gt;&lt;java name='Benutzername' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Benutzername' role='panel' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;java name='Benutzername' role='text' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;" Guid="206b40aa-d56e-4f1a-98f0-58264a630942" InformativeScreenshot="d6d77d081e18884e8512d832e306ab8d.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/mpDHl15D3kGkIsN-bw_pbg" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                </uix:NCheckElement.Target>
+              </uix:NCheckElement>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Existiert der Eintrag: &quot; +exist_LDAPEintrag.ToString]" />
+            </Sequence>
+            <If Condition="[exist_LDAPEintrag = True]" DisplayName="Check if user exists" sap:VirtualizedContainerService.HintSize="486,4863" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Rechte entziehen" sap:VirtualizedContainerService.HintSize="484,962" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Int32" Default="0" Name="counter" />
+                    <Variable x:TypeArguments="x:Boolean" Name="counter_is_valid" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Nutzer existiert! - Entziehe alte Rechte.">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </WriteLine>
+                  <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click 'korbinian.zacherl(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="5ZXkXTdDeU2q6woh8PqiQw" DesignTimeRectangle="734, 279, 315, 32" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;" Guid="18f1cb4d-db49-4762-8906-a65874c98b07" InformativeScreenshot="874a311ca31a393061ed688065319158.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/b-uM34kjaEKmkJxGqAjuMw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <Sequence DisplayName="Gruppen entfernen" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="470,122" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Gruppen werden entfernt.">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </WriteLine>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Entfernen'" sap:VirtualizedContainerService.HintSize="470,139" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ec71477-639e-4585-a8ac-52d156cb6837" InformativeScreenshot="0c2188fe7a5e8834b6cac7bbe65fe569" Selector="&lt;java name='Gruppen' role='toggle button' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:Click>
+                    <Assign sap:VirtualizedContainerService.HintSize="470,114" sap2010:WorkflowViewState.IdRef="Assign_28">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[counter_is_valid]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="470,790" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                      <ui:InterruptibleDoWhile.Body>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,660" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="counter_is_valid" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:UiElementExists DisplayName="Element Exists 'check box'" Exists="[counter_is_valid]" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                            <ui:UiElementExists.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="06d316ea-e211-4049-a40b-fd1d732c9636" InformativeScreenshot="4f35d985f459e8345eddacbf8015d988" Selector="&lt;java cls='Table' role='table' /&gt;&lt;java role='check box' tableCol='0' tableRow='0' /&gt;" TimeoutMS="10">
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:UiElementExists.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:UiElementExists>
+                          <If Condition="[counter_is_valid=True]" DisplayName="If next gruppe vorhanden" sap:VirtualizedContainerService.HintSize="434,356" sap2010:WorkflowViewState.IdRef="If_2">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'check box'" sap:VirtualizedContainerService.HintSize="416,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ba3498a-91a2-4e22-9153-42e45f62bef9" InformativeScreenshot="fea1f22267d7b6878138239efecf1328" Selector="&lt;java cls='Table' role='table' /&gt;&lt;java role='check box' tableCol='0' tableRow='0' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                              </ui:Click>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_30">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[counter + 1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </ui:InterruptibleDoWhile.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InterruptibleDoWhile>
+                    <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="470,269" sap2010:WorkflowViewState.IdRef="NMouseScroll_2" InteractionMode="HardwareEvents" MovementUnits="10" Version="V4">
+                      <uix:NMouseScroll.SearchedElement>
+                        <uix:SearchedElement>
+                          <uix:SearchedElement.Target>
+                            <uix:TargetAnchorable ContentHash="vHkUt6mJ7keo07JEifEg4A" DesignTimeRectangle="1867, 336, 18, 578" FullSelectorArgument="&lt;java cls='ScrollBar' hasTableAncestor='0' idx='5' role='scroll bar' /&gt;" Guid="73a9a6ef-8cbe-4ace-b0d7-7c3ca97dbaad" InformativeScreenshot="932c65d7f1a679bceaebca8060a6322c.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/cpy7aiqYr0abOOlM33yD4Q" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                          </uix:SearchedElement.Target>
+                          <uix:SearchedElement.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:SearchedElement.Timeout>
+                        </uix:SearchedElement>
+                      </uix:NMouseScroll.SearchedElement>
+                    </uix:NMouseScroll>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Entfernen'" sap:VirtualizedContainerService.HintSize="470,130" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ec71477-639e-4585-a8ac-52d156cb6837" InformativeScreenshot="d476f046024e2c67f662405a73249ec3" Selector="&lt;java hasTableAncestor='0' name='Entfernen' role='push button' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                  <Sequence DisplayName="Rollen entfernen" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="470,122" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="Rollen werden entfernt." />
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Entfernen'" sap:VirtualizedContainerService.HintSize="470,139" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ec71477-639e-4585-a8ac-52d156cb6837" InformativeScreenshot="e306eb49128c0e41c83f04ef96c81f63" Selector="&lt;java name='Rollen' role='toggle button' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <Assign sap:VirtualizedContainerService.HintSize="470,114" sap2010:WorkflowViewState.IdRef="Assign_29">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[counter_is_valid]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="470,790" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+                      <ui:InterruptibleDoWhile.Body>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,660" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:UiElementExists DisplayName="Element Exists 'check box'" Exists="[counter_is_valid]" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                            <ui:UiElementExists.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="06d316ea-e211-4049-a40b-fd1d732c9636" InformativeScreenshot="dba2b772b352fa4cceee027ee790210e" Selector="&lt;java cls='Table' role='table' /&gt;&lt;java role='check box' tableCol='0' tableRow='0' /&gt;" TimeoutMS="10">
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:UiElementExists.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:UiElementExists>
+                          <If Condition="[counter_is_valid=True]" DisplayName="If next rolle vorhanden" sap:VirtualizedContainerService.HintSize="434,356" sap2010:WorkflowViewState.IdRef="If_3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'check box'" sap:VirtualizedContainerService.HintSize="416,107" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ba3498a-91a2-4e22-9153-42e45f62bef9" InformativeScreenshot="ddd4a47f2cf578439669d5d949122e30" Selector="&lt;java cls='Table' role='table' /&gt;&lt;java role='check box' tableCol='0' tableRow='0' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                              </ui:Click>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_31">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[counter + 1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </ui:InterruptibleDoWhile.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InterruptibleDoWhile>
+                    <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="470,269" sap2010:WorkflowViewState.IdRef="NMouseScroll_1" InteractionMode="HardwareEvents" MovementUnits="10" Version="V4">
+                      <uix:NMouseScroll.SearchedElement>
+                        <uix:SearchedElement>
+                          <uix:SearchedElement.Target>
+                            <uix:TargetAnchorable ContentHash="vHkUt6mJ7keo07JEifEg4A" DesignTimeRectangle="1867, 336, 18, 578" FullSelectorArgument="&lt;java cls='ScrollBar' hasTableAncestor='0' idx='5' role='scroll bar' /&gt;" Guid="73a9a6ef-8cbe-4ace-b0d7-7c3ca97dbaad" InformativeScreenshot="932c65d7f1a679bceaebca8060a6322c.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/cpy7aiqYr0abOOlM33yD4Q" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                          </uix:SearchedElement.Target>
+                          <uix:SearchedElement.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:SearchedElement.Timeout>
+                        </uix:SearchedElement>
+                      </uix:NMouseScroll.SearchedElement>
+                    </uix:NMouseScroll>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Entfernen'" sap:VirtualizedContainerService.HintSize="470,130" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ec71477-639e-4585-a8ac-52d156cb6837" InformativeScreenshot="46297de2a921922e25fb04e53a4f6e4e" Selector="&lt;java hasTableAncestor='0' name='Entfernen' role='push button' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Speichern'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="wkLqEX2PBUCpBiBnle8Alg" DesignTimeRectangle="645, 290, 127, 42" ElementType="Button" FullSelectorArgument="&lt;java name='Speichern' role='push button' /&gt;" Guid="bd9c7acd-c836-4fd6-91cd-079cc5c772fd" InformativeScreenshot="304f6caa70ef08a5058c9b273c95ecd1.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/U069GYkItEudQfnbnYDYvQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'push button(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,216" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="dXaME6HnSEq5nz6TcDoO_g" DesignTimeRectangle="1865, 71, 25, 25" ElementType="Button" FullSelectorArgument="&lt;java cls='ProzessSchliessenButton' role='push button' /&gt;" Guid="d710d1f5-580d-45c8-b227-97a79225b7a5" InformativeScreenshot="373ebf7e004544d96dd27b5e385622af.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/wHttnlYICEOXysor1pNMcw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Mandant - Nutzer hinzufügen" sap:VirtualizedContainerService.HintSize="484,3770" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="userTableRow" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'push button(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="dXaME6HnSEq5nz6TcDoO_g" DesignTimeRectangle="1865, 71, 25, 25" ElementType="Button" FullSelectorArgument="&lt;java cls='ProzessSchliessenButton' role='push button' /&gt;" Guid="d710d1f5-580d-45c8-b227-97a79225b7a5" InformativeScreenshot="373ebf7e004544d96dd27b5e385622af.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/wHttnlYICEOXysor1pNMcw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Nutzer existiert nicht. - Wird angelegt.">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </WriteLine>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Systemeinstellung alt E(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="nUo4MQRVO0KYsFtb1RLNFw" DesignTimeRectangle="27, 746, 55, 55" ElementType="Button" FullSelectorArgument="&lt;java name='Systemeinstellung alt E' role='push button' /&gt;" Guid="eb210978-5643-497a-bb92-cecbb24ed81c" InformativeScreenshot="c31af20e58ae2775d67ee83b3c65e47e.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/xIs-DeKtHUKQSe9LDHFr4A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzerverwaltung (kla…(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="1eNCiMEw2Uu1p42oStiFPA" DesignTimeRectangle="109, 321, 355, 31" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;" Guid="496b9ff2-d3be-457f-b29b-0c0962cda88d" InformativeScreenshot="6e1e6609732f4702e5469cb99546261f.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/yoCOuIH7vUSACooytNEhQA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Authentifizierung(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="Kwi_4XQDxEi7B6rOJEMaQg" DesignTimeRectangle="109, 352, 355, 31" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;" Guid="7676e64d-fb89-4c3c-88cf-5af97e342a11" InformativeScreenshot="6b79894a2311c33e46c05d9bcb9c908e.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/m_A1juDNQUS1rMjyBaUw1g" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Mandanten'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="8d4cUTnt1kuc_OQ00b_qIA" DesignTimeRectangle="109, 446, 355, 31" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung (klassisch)' role='panel' /&gt;&lt;java name='Authentifizierung' role='panel' /&gt;&lt;java name='Mandanten' role='panel' /&gt;" Guid="f99282e6-8a55-4daa-8e8d-5c7f3a9b8106" InformativeScreenshot="6438228bc00251bdf03440603b945ba6.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/ShDX5CcEkEC_4Eb9vn3ojA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Aktiviert, Aktiv: Ja, N…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="bVWB4ZwOQUCAjRxvwvNhqw" DesignTimeRectangle="529, 297, 47, 32" ElementType="CheckBox" FuzzySelectorArgument="&lt;java name='Deaktiviert, Aktiv: Ja, Name: e01' role='table' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;java role='check box' check:fulltext='Deaktiviert, Aktiv: Ja, Name: e01' /&gt;" Guid="8dadad39-375f-479a-a7e4-d8684baaf36e" InformativeScreenshot="515eef93aa3c5a647ef3416e9744d1d1.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/M-zjHwkAW0CBSk4SQ5usow" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="655, 297, 1171, 32" ElementType="Text" FullSelectorArgument="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='2' tableRow='1' /&gt;" Guid="76b8ec83-e67e-4c4f-8089-9b0654d0be70" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,269" sap2010:WorkflowViewState.IdRef="NMouseScroll_3" InteractionMode="HardwareEvents" MovementUnits="10" Version="V4">
+                    <uix:NMouseScroll.SearchedElement>
+                      <uix:SearchedElement>
+                        <uix:SearchedElement.Target>
+                          <uix:TargetAnchorable ContentHash="gdIqqfmT2UapnajxJaD8Ww" DesignTimeRectangle="1867, 177, 18, 737" FullSelectorArgument="&lt;java cls='ScrollBar' hasTableAncestor='0' idx='7' role='scroll bar' /&gt;" Guid="3fa69a74-0403-4ae5-9a81-1e3318d5a256" InformativeScreenshot="5089abe10b3a5edbdb5f55a6bdcd2372.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/Rt82HGLaQE2m3ZB44MmFCA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                        </uix:SearchedElement.Target>
+                        <uix:SearchedElement.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:SearchedElement.Timeout>
+                      </uix:SearchedElement>
+                    </uix:NMouseScroll.SearchedElement>
+                  </uix:NMouseScroll>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_18" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="Q-d3Wy4h6EO1Mc3HdH3qeg" DesignTimeRectangle="1004, 850, 245, 42" ElementType="Button" FullSelectorArgument="&lt;java hasTableAncestor='0' name='Benutzer übernehmen' role='push button' /&gt;" Guid="2c6ae86f-735b-46c5-9551-4cfb6fc80802" InformativeScreenshot="7756f9260a0b6cf3fb943b06637fc0b1.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/y-gyRvbuxkuiRhKZmzGKmQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_19" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="pOtC0pdGo0qF4gsRG2imPw" DesignTimeRectangle="1131, 650, 156, 42" ElementType="Button" FullSelectorArgument="&lt;java name='Es wird eine Verbindung zu einem externen System hergestellt. Dies kann einige Zeit in Anspruch nehmen. Wollen Sie fortfahren ? ' role='internal frame' /&gt;&lt;java name='OK' role='push button' /&gt;" Guid="eac7f7c5-08f7-4f85-8c29-ddb61ab0fd1d" InformativeScreenshot="13484b61fc73d1efff4fc4bb073ee625.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/5O6cfjboqkOwpODaTj-H2A" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="None" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <ui:WaitUiElementVanish WaitNotActive="{x:Null}" WaitNotVisible="{x:Null}" ContinueOnError="True" DisplayName="Wait Element Vanish 'label  Bitte warten ...'" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="WaitUiElementVanish_1">
+                    <ui:WaitUiElementVanish.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b569d66e-85e0-48da-b217-7f6f41b7bb8c" InformativeScreenshot="a91810fdbdbd52e12b33a63d011b026d" Selector="&lt;java cls='AkdbNonOpaquePanel' role='panel' /&gt;" TimeoutMS="80000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementVanish.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:WaitUiElementVanish>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="Wartevorgang zu ende.">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </WriteLine>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,232" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" Version="V4">
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="tableRow" DisplayName="Get table row" sap:VirtualizedContainerService.HintSize="450,235" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[userTableRow]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db9f6628-2884-4926-9208-1a247beaae38" InformativeScreenshot="258868b4613a255e390876258c91cc0f" Selector="&lt;java cls='Table' role='table' /&gt;&lt;java role='label' tableCol='3' tableRow='0' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:GetAttribute>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[LDAP_Kennung+&quot; hat folgende Tablerow: &quot; +userTableRow.ToString]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </WriteLine>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="Setze Häckchen.">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </WriteLine>
+                  <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check 'check box'" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="Check_1">
+                    <ui:Check.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c767a2c3-0bc3-4a48-ba5d-4bd8607e650d" InformativeScreenshot="b30c1fcab2424836f35177407ce94bb4" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;&#xA;&lt;java cls='Table' idx='1' role='table' /&gt;&#xA;&lt;java role='check box' tableCol='0' tableRow='{{userTableRow}}' /&gt;&#xA;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Check.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Check>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="84a63251-6de2-4256-bd6c-0575c8fb1128" InformativeScreenshot="ef052b4cd6169b7e4d61843507bf7566" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;&lt;java name='Zuordnung übernehmen' role='push button' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Click>
+                  <ui:WaitUiElementVanish WaitNotActive="{x:Null}" WaitNotVisible="{x:Null}" ContinueOnError="True" DisplayName="Wait Element Vanish 'label  Bitte warten ...'" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="WaitUiElementVanish_2">
+                    <ui:WaitUiElementVanish.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b569d66e-85e0-48da-b217-7f6f41b7bb8c" InformativeScreenshot="93d3751a9846255f928b910eac5fa753" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;&lt;java name='Bitte warten ...' role='label' /&gt;" TimeoutMS="40000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementVanish.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:WaitUiElementVanish>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" sap:VirtualizedContainerService.HintSize="450,130" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="082f28ec-a3b8-4210-809a-0e03b00f0cf0" InformativeScreenshot="b2b83e63410b8d9064f9f0a31cb06d81" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/* SYNERGO' /&gt;&#xA;&lt;java cls='ProzessSchliessenButton' role='push button' /&gt;&#xA;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Click>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-10, -1080, 1936, 1056" ContentHash="cIwySb03n0yoVULwKpUFvw" FilePath="C:\okprg\okewo\java\jre_64\bin\javaw.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIdSURBVFhHzZbLbtpQEIaxcRqpqkTURddV3iJv2oaLHbLqos+SRUSiRAEa4pAoFW0XtASw/WeOoRWY30BOjTSDPiE+HebMuXigVPLvoBoqNUGlJqjUBJWaoFITVGqCSk1QqQkqc3D8nryHGW8+b4sZb3IYFnOsgcoc9oIufmGCn0DKQHjYgkfBjB9GwJfOd3jNFtx/BW+AyhVCuI0Qw2Qq0xQTP2LArW6xk1QSvOAWyTx5ETE2TBM61xJUEtzGNWJTYkFVygYiSWK51/coBW06ZwqVORwenyGOxojlqKPMayouxjNhLGuaYBLzlX2oXcKR68PmS6EyB69mVvskmCdaaCzj1R4J/ZRSsz8vaTnefzqX7665i1Qu4Prf4NV7csQmyYM1jm+e5dWoVFuyYOsdDFGWu4dkiHj8Z57y9WEON+/qVqoXlgUGPezXnzCCuVvSwHYU1gWWT0NpA7/naXYX1ke8Vw9l3wrqKWvCukBXLna2vmfh7ek9ys32K+nA87uzJJmwP2Jf2kKmQNP9nZMOHb8J96Q9S5IJ6wLdxmqBZgc9eXjY+I3ILrL4jzbTk/qK+3OQF9YFOv51eqS7Dvs+KE36Y3COaCo9MFHYB/9y9PUSo2g0K9LcyYKpHN/ID0KXzp1C5SJBH++qA1Q+X0myFg7k30eRvKkNpMAbPreBSk1QqQkqNUGlJqjUBJWaoFITVGqCSk1QqQkq1XCHF+6QkjMCUgz5AAAAAElFTkSuQmCC" InformativeScreenshot="c3848de9ff1d47ebbc27501b078ec530.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/k_tKNZNlSE2QULoCqivMVw" Selector="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

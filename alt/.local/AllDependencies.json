@@ -23136,9 +23136,9 @@
     "restore": {
       "projectUniqueName": "LHM RPA POC",
       "projectName": "LHM RPA POC",
-      "projectPath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\.local",
+      "projectPath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\alt\\.local",
       "packagesPath": "C:\\Users\\korbinian.zacherl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\.local",
+      "outputPath": "C:\\Users\\korbinian.zacherl\\Documents\\UiPath\\EWO\\uipath-rpa_ewo\\alt\\.local",
       "UsingMicrosoftNETSdk": false
     },
     "frameworks": {
