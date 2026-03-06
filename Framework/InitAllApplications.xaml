@@ -109,9 +109,10 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="953.6,1968.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1172,2737.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="str_Password" />
@@ -122,39 +123,69 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="953.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Test/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="953.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
-    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-K1.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="953.6,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="953.6,974.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Version="V2">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="488,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Test/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="488,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
+    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-K1.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="488,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1538.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="416,724" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="484.8,1288" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Text="[str_Username]" Version="V4">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable ContentHash="DZAlENeWKUehwy9VhO8jTg" DesignTimeRectangle="158, 54, 463, 32" DesignTimeScaleFactor="1" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Benutzername:' role='text' /&gt;" Guid="6fb3a24d-9140-486e-9599-810938498e1a" InformativeScreenshot="4d8ddd7f8289b4634d51cdf853632100.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/_Yy983bIGEa9IrytDyvolw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
-              </uix:NTypeInto.Target>
-              <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears" Retry="True" Timeout="5" />
-              </uix:NTypeInto.VerifyOptions>
-            </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'password text Passwort'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" IsPassword="True" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" SecureText="[str_Password]" Version="V4">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable ContentHash="WAivqH_8A0KTXfrd6BN2ng" DesignTimeRectangle="158, 92, 463, 32" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Passwort:' role='password text' /&gt;" Guid="a8e42a9b-86e4-43a8-a079-71c665ade2cc" InformativeScreenshot="8b59208d237674f896c8e5b9ee3be173.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/wG9VdN39MkCxGARzfZQmrw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
-              </uix:NTypeInto.Target>
-            </uix:NTypeInto>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Anmelden'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Version="V4">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable ContentHash="JxySS4EF4U-riLCCCUDGXg" DesignTimeRectangle="478, 215, 133, 40" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Anmelden' role='push button' /&gt;" Guid="a103634b-757e-4fb5-b742-12db1566822e" InformativeScreenshot="3cc7ae7b3234b967b00d8f50786f796c.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/x-acTXbq6064tWin9KizXQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
-              </uix:NClick.Target>
-            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Benutzername'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="451.2,1228" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="449.6,723.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Text="[str_Username]" Version="V4">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable ContentHash="DZAlENeWKUehwy9VhO8jTg" DesignTimeRectangle="158, 54, 463, 32" DesignTimeScaleFactor="1" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Benutzername:' role='text' /&gt;" Guid="6fb3a24d-9140-486e-9599-810938498e1a" InformativeScreenshot="4d8ddd7f8289b4634d51cdf853632100.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/_Yy983bIGEa9IrytDyvolw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.VerifyOptions>
+                      <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears" Retry="True" Timeout="5" />
+                    </uix:NTypeInto.VerifyOptions>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'password text Passwort'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" IsPassword="True" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" SecureText="[str_Password]" Version="V4">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable ContentHash="WAivqH_8A0KTXfrd6BN2ng" DesignTimeRectangle="158, 92, 463, 32" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Passwort:' role='password text' /&gt;" Guid="a8e42a9b-86e4-43a8-a079-71c665ade2cc" InformativeScreenshot="8b59208d237674f896c8e5b9ee3be173.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/wG9VdN39MkCxGARzfZQmrw" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Anmelden'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,180" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="JxySS4EF4U-riLCCCUDGXg" DesignTimeRectangle="478, 215, 133, 40" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Anmelden' role='push button' /&gt;" Guid="a103634b-757e-4fb5-b742-12db1566822e" InformativeScreenshot="3cc7ae7b3234b967b00d8f50786f796c.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/x-acTXbq6064tWin9KizXQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="Selector" Version="V4" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[new ApplicationException(&quot;Anmeldefeld nach 180 Sekunden nicht sichtbar&quot;)]" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="129, 44, 375, 26" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;java name='Benutzername:' role='text' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;" Guid="02e72cb1-e530-4bcc-aacf-092de3b947c6" InformativeScreenshot="331f4fa4044038e74cb496cc37d07440.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="20, 46, 103, 22" ElementType="Text" FuzzySelectorArgument="&lt;java name='Benutzername:' role='label' check:text='Benutzername:' /&gt;" Guid="5f680101-cf00-4633-b0ee-fb0bfd1e6130" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -170,28 +201,31 @@
           <uix:TargetApp.Arguments>
             <InArgument x:TypeArguments="x:String" />
           </uix:TargetApp.Arguments>
+          <uix:TargetApp.WorkingDirectory>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.WorkingDirectory>
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <uix:NCheckState DisplayName="Check App State 'Benutzer alt K'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="954,470" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="120" Version="V4">
+    <uix:NCheckState DisplayName="Check App State 'Benutzer alt K'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="488,675" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="120" Version="V4">
       <uix:NCheckState.IfExists>
-        <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,230" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Application oppened successfull&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Application oppened successfull&quot;]" />
         </Sequence>
       </uix:NCheckState.IfExists>
       <uix:NCheckState.IfNotExists>
-        <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[new ApplicationException(&quot;Synergo nach 90 Sekunden nicht gestartet&quot;)]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[new ApplicationException(&quot;Synergo nach 90 Sekunden nicht gestartet&quot;)]" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </uix:NCheckState.IfNotExists>
       <uix:NCheckState.Target>
