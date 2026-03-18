@@ -167,7 +167,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="625.6,9121.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1558.2,13775" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Date" />
       <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
@@ -175,7 +175,7 @@
       <Variable x:TypeArguments="x:String" Name="str_snow_kommentar" />
       <Variable x:TypeArguments="x:String" Name="str_snow_sctask_state" />
       <Variable x:TypeArguments="x:String" Name="str_snow_response" />
-      <Variable x:TypeArguments="njl:JObject" Name="JObj_SNOW_Ticketinfos" />
+      <Variable x:TypeArguments="njl:JObject" Name="Job_SNOW_Ticketinfos" />
       <Variable x:TypeArguments="s:String[]" Name="groups" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -184,22 +184,22 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="625.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope - Get Ticket Infos" sap:VirtualizedContainerService.HintSize="625.6,591.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="30.00:00:00">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="626,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope - Get Ticket Infos" sap:VirtualizedContainerService.HintSize="626,582" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="30.00:00:00">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="449.6,383.2" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="450,375" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Mit diesem Aufruf erfolgt die Abfrage der SNOW-Ticketinfos.&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden &#xA;&#xA;Der Output wird in der Variable &quot;JObj_SNOW_Ticketinfos&quot; gespeichert. Mit dieser kann unabhängig vom Ticket weitergearbeitet werden" DisplayName="GET Ticket Infos - Invoke Workflow File (Process\GET Ticket Infos.xaml)" sap:VirtualizedContainerService.HintSize="416,323.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\GET Ticket Infos.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Mit diesem Aufruf erfolgt die Abfrage der SNOW-Ticketinfos.&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden &#xA;&#xA;Der Output wird in der Variable &quot;JObj_SNOW_Ticketinfos&quot; gespeichert. Mit dieser kann unabhängig vom Ticket weitergearbeitet werden" DisplayName="GET Ticket Infos - Invoke Workflow File (Process\GET Ticket Infos.xaml)" sap:VirtualizedContainerService.HintSize="416,315" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\GET Ticket Infos.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_request_call">[in_Config("Str_SNOW_request_call").ToString()]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_get_oauth_token">[in_Config("Str_SNOW_get_oauth_token").ToString()]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="In_str_SNOW_Ticket_Sysid">[in_TransactionItem.Reference]</InArgument>
-                <OutArgument x:TypeArguments="njl:JObject" x:Key="Out_JObj_SNOW_Ticketinfos">[JObj_SNOW_Ticketinfos]</OutArgument>
+                <OutArgument x:TypeArguments="njl:JObject" x:Key="Out_JObj_SNOW_Ticketinfos">[Job_SNOW_Ticketinfos]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -249,17 +249,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - SNOW Response" sap:VirtualizedContainerService.HintSize="624,511.2" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3" RetryInterval="30.00:00:00">
+    <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - SNOW Response" sap:VirtualizedContainerService.HintSize="626,507" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3" RetryInterval="30.00:00:00">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence sap2010:Annotation.AnnotationText="Dieser Workflow schließt das Ticket mit den zuvor festgelegten Werten!&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden " DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="449.6,303.2" sap2010:WorkflowViewState.IdRef="Sequence_38">
+          <Sequence sap2010:Annotation.AnnotationText="Dieser Workflow schließt das Ticket mit den zuvor festgelegten Werten!&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden " DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="450,300" sap2010:WorkflowViewState.IdRef="Sequence_38">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SNOW Response - Invoke Workflow File (Process\SNOW Response.xaml)" sap:VirtualizedContainerService.HintSize="416,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\SNOW Response.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SNOW Response - Invoke Workflow File (Process\SNOW Response.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\SNOW Response.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="Out_str_snow_response">[str_snow_response]</OutArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_get_oauth_token">[in_Config("Str_SNOW_get_oauth_token").ToString()]</InArgument>
@@ -282,20 +282,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="624,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_snow_response]" />
-    <If Condition="[str_snow_response.Contains(&quot;error&quot;)]" sap:VirtualizedContainerService.HintSize="624,401.6" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="626,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_snow_response]" />
+    <If Condition="[str_snow_response.Contains(&quot;error&quot;)]" sap:VirtualizedContainerService.HintSize="626,400" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_39">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[New SystemException(&quot;Abschließen des Tickets fehlgeschlagen. SysID:&quot; &amp; in_TransactionItem.Reference &amp; &quot;SNOW Kommentar:&quot; &amp; str_snow_kommentar)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[New SystemException(&quot;Abschließen des Tickets fehlgeschlagen. SysID:&quot; &amp; in_TransactionItem.Reference &amp; &quot;SNOW Kommentar:&quot; &amp; str_snow_kommentar)]" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_40">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -304,7 +304,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="getting data from JSON" sap:VirtualizedContainerService.HintSize="625.6,862.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="getting data from JSON" sap:VirtualizedContainerService.HintSize="626,860" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="filepath_and_name" />
       </Sequence.Variables>
@@ -314,54 +314,56 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[JObj_SNOW_Ticketinfos.ToString]" />
-      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_28">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Job_SNOW_Ticketinfos.ToString]" />
+      <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_28">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[LDAP_Kennung]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(JObj_SNOW_Ticketinfos("requested_for")("email").ToString.Contains("@"),
-   JObj_SNOW_Ticketinfos("requested_for")("email").ToString.Split("@"c)(0),
-   JObj_SNOW_Ticketinfos("requested_for")("email").ToString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(Job_SNOW_Ticketinfos("requested_for")("email").ToString.Contains("@"),
+   Job_SNOW_Ticketinfos("requested_for")("email").ToString.Split("@"c)(0),
+   Job_SNOW_Ticketinfos("requested_for")("email").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="s:String[]">[groups]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[JObj_SNOW_Ticketinfos("variables") _
-    .Where(Function(v) v("name").ToString = "Gruppe (EWO)") _
-    .First()("value").ToString _
-    .Split(","c)]</InArgument>
+          <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[Job_SNOW_Ticketinfos("variables").
+Where(Function(v) v("name").ToString = "Gruppe (EWO)").
+First()("value").ToString.
+Split(","c).
+Select(Function(x) x.Trim).
+ToArray()]</InArgument>
         </Assign.Value>
       </Assign>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_23" Text="[LDAP_Kennung]" />
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="433.6,295.2" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[groups]">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="WriteLine_23" Text="[LDAP_Kennung]" />
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="434,294" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[groups]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,173.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
+            <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_44">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_24" Text="[currentText]" />
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="WriteLine_24" Text="[currentText]" />
             </Sequence>
           </ActivityAction>
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="625.6,6071.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="626,10749" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="620.8,5829.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="624,10509" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Default="0" Name="get_user_row" />
             </Sequence.Variables>
@@ -371,14 +373,14 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="587.2,928.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="590,5426" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Systemeinstellung alt E(4)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Systemeinstellung alt E(4)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="556,257" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                 <uix:NClick.Target>
                   <uix:TargetAnchorable DesignTimeRectangle="23, 814, 44, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Systemeinstellung alt E' role='push button' /&gt;" Guid="24b1d3a5-e850-499b-9cf5-ed79b2c4eb0c" InformativeScreenshot="6777489468e5eb1647122c905fb2ab66.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                 </uix:NClick.Target>
@@ -396,7 +398,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NClick>
-              <uix:NClick ActivateBefore="True" ClickType="Single" CursorMotionType="Instant" DisplayName="Click 'Benutzerverwaltung (kla…'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+              <uix:NClick ActivateBefore="True" ClickType="Single" CursorMotionType="Instant" DisplayName="Click 'Benutzerverwaltung (kla…'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="556,257" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                 <uix:NClick.Target>
                   <uix:TargetAnchorable DesignTimeRectangle="109, 227, 355, 31" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;java name='Tree View' role='panel' /&gt;&lt;java cls='SelectionPanelTree' role='tree' /&gt;&lt;java name='Benutzerverwaltung*' role='panel' /&gt;" Guid="0821634a-c329-41e2-a8e4-881cc32ecce1" InformativeScreenshot="0ebede414fa6f1d3d7c966ef08068776.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                 </uix:NClick.Target>
@@ -414,7 +416,7 @@
                   </uix:VerifyExecutionOptions>
                 </uix:NClick.VerifyOptions>
               </uix:NClick>
-              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="556,240" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
                 <uix:NTypeInto.Target>
                   <uix:TargetAnchorable DesignTimeRectangle="1114, 283, 222, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Benutzername' role='editable text' /&gt;" Guid="fdf08898-4c97-4e89-a624-36c766f5a8b0" InformativeScreenshot="4014496afd9b9afd5c77de9708ff5237.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                 </uix:NTypeInto.Target>
@@ -429,15 +431,15 @@
                   </uix:VerifyExecutionTypeIntoOptions>
                 </uix:NTypeInto.VerifyOptions>
               </uix:NTypeInto>
-              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="553.6,4579.2" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Timeout="3" Version="V4">
+              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="556,4580" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Timeout="3" Version="V4">
                 <uix:NCheckState.IfExists>
-                  <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="552,4201.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                  <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="554,4185" sap2010:WorkflowViewState.IdRef="Sequence_46">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Rechte entziehen" sap:VirtualizedContainerService.HintSize="518.4,4141.6" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                    <Sequence DisplayName="Rechte entziehen" sap:VirtualizedContainerService.HintSize="520,4125" sap2010:WorkflowViewState.IdRef="Sequence_49">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Int32" Default="0" Name="counter" />
                         <Variable x:TypeArguments="x:Boolean" Name="counter_is_valid" />
@@ -448,19 +450,19 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484.8,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_29" Text="Nutzer existiert! - Entziehe alte Rechte.">
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="486,122" sap2010:WorkflowViewState.IdRef="WriteLine_29" Text="Nutzer existiert! - Entziehe alte Rechte.">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </WriteLine>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="484.8,189.6" sap2010:WorkflowViewState.IdRef="NClick_72" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,189" sap2010:WorkflowViewState.IdRef="NClick_72" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1824, 557, 40, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row *' role='outline item' /&gt;&lt;ctrl name='  ' role='cell' /&gt;&lt;ctrl name='  ' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="076104a4-68d3-4e45-b40a-788e10515fad" InformativeScreenshot="2f83a6f412dccf4cc2479e27c5808453.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="484.8,257.6" sap2010:WorkflowViewState.IdRef="NClick_73" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,257" sap2010:WorkflowViewState.IdRef="NClick_73" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1132, 553, 174, 61" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen' role='page tab' /&gt;&lt;ctrl name='Berechtigungen' role='link' /&gt;" Guid="8f4024e7-f76f-4f8b-8caf-4cf3a93fc6f6" InformativeScreenshot="91bb6736638e082a0af95d11fd41d675.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -478,14 +480,14 @@
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <Sequence DisplayName="Gruppen entfernen" sap:VirtualizedContainerService.HintSize="484.8,1877.6" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                      <Sequence DisplayName="Gruppen entfernen" sap:VirtualizedContainerService.HintSize="486,1870" sap2010:WorkflowViewState.IdRef="Sequence_50">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,257.6" sap2010:WorkflowViewState.IdRef="NClick_74" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,257" sap2010:WorkflowViewState.IdRef="NClick_74" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="865, 384, 979, 35" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Gruppen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="8a5495bb-f1ee-489b-a45c-65d889c709ad" InformativeScreenshot="f7e75ed653e79a52dfc04c47422a71bf.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
@@ -503,7 +505,7 @@
                             </uix:VerifyExecutionOptions>
                           </uix:NClick.VerifyOptions>
                         </uix:NClick>
-                        <uix:NCheckState DisplayName="Check App State 'Gruppen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="451.2,1279.2" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NCheckState DisplayName="Check App State 'Gruppen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1273" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NCheckState.IfExists>
                             <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="Sequence_52">
                               <sap:WorkflowViewStateService.ViewState>
@@ -514,20 +516,20 @@
                             </Sequence>
                           </uix:NCheckState.IfExists>
                           <uix:NCheckState.IfNotExists>
-                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="449.6,946.4" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,944" sap2010:WorkflowViewState.IdRef="Sequence_53">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_30" Text="Gruppen werden entfernt.">
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_30" Text="Gruppen werden entfernt.">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </WriteLine>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_75" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_75" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="866, 534, 40, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Select All Sort by Bezeichnung Sort by Kommentar Sort by Status' role='outline item' /&gt;&lt;ctrl name='Select All' role='column header' /&gt;&lt;ctrl name='Select All' role='grouping' /&gt;&lt;ctrl role='editable text' /&gt;" Guid="5cbedcef-c3a7-4dd0-9644-744f9b7d4339" InformativeScreenshot="d1e979be9920d500e2f055bfb9ec3258.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -545,7 +547,7 @@
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_76" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_76" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable ContentHash="HKxPdtwdjUG4jDGWrsZSAQ" DesignTimeRectangle="1322, 458, 102, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Entfernen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="19ed2ea9-0ef7-428b-9756-c654a52a4f57" InformativeScreenshot="84eeaeff4d87f17c0b2d8e8283562316.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/9mQ82UveiU2bCofRrzqcyA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -569,7 +571,7 @@
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248.8" sap2010:WorkflowViewState.IdRef="NClick_77" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248" sap2010:WorkflowViewState.IdRef="NClick_77" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="1399, 660, 89, 42" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Entfernen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Entfernen' /&gt;" Guid="b3a34fd9-f12a-4f5b-9003-e0d224628130" InformativeScreenshot="47641df2d808b8d21a1b35dfbfe892f3.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
                                     <uix:TargetAnchorable.Anchors>
@@ -605,7 +607,7 @@
                             </uix:TargetAnchorable>
                           </uix:NCheckState.Target>
                         </uix:NCheckState>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,248.8" sap2010:WorkflowViewState.IdRef="NClick_78" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,248" sap2010:WorkflowViewState.IdRef="NClick_78" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="865, 384, 979, 35" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Gruppen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Gruppen' /&gt;" Guid="cbd27467-8f1d-4ad6-add5-0dfbbb3793c4" InformativeScreenshot="01d0a3f3147d92acc243ea75e8bab856.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
                               <uix:TargetAnchorable.Anchors>
@@ -630,7 +632,7 @@
                           </uix:NClick.VerifyOptions>
                         </uix:NClick>
                       </Sequence>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Rollen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="484.8,257.6" sap2010:WorkflowViewState.IdRef="NClick_79" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Rollen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,257" sap2010:WorkflowViewState.IdRef="NClick_79" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="865, 489, 979, 35" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Rollen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="1f2e3c0a-26a9-4b7a-8541-95ec8003bd58" InformativeScreenshot="d6844ed79aad2d5a1d249d537223f538.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -648,14 +650,14 @@
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <Sequence DisplayName="Rollen entfernen" sap:VirtualizedContainerService.HintSize="484.8,1353.6" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                      <Sequence DisplayName="Rollen entfernen" sap:VirtualizedContainerService.HintSize="486,1347" sap2010:WorkflowViewState.IdRef="Sequence_51">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NCheckState DisplayName="Check App State 'Rollen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="451.2,1270.4" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NCheckState DisplayName="Check App State 'Rollen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1264" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NCheckState.IfExists>
                             <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,91" sap2010:WorkflowViewState.IdRef="Sequence_54">
                               <sap:WorkflowViewStateService.ViewState>
@@ -666,14 +668,14 @@
                             </Sequence>
                           </uix:NCheckState.IfExists>
                           <uix:NCheckState.IfNotExists>
-                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="449.6,946.4" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,944" sap2010:WorkflowViewState.IdRef="Sequence_55">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_31" Text="Rollen werden entfernt." />
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Bezeichnung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_80" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_31" Text="Rollen werden entfernt." />
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Bezeichnung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_80" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="866, 473, 40, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All Sort by Bezeichnung Sort by Verfahren Sort by Komment*' role='outline item' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All' role='column header' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All' role='grouping' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='editable text' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' /&gt;" Guid="c1368c39-4129-4096-90d4-946599281278" InformativeScreenshot="2d72d33f41765df501e9d847da100820.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
                                     <uix:TargetAnchorable.Anchors>
@@ -697,7 +699,7 @@
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_81" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_81" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="1591, 563, 102, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Entfernen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="4883f3a0-e590-4d56-bb6f-46b13c5244be" InformativeScreenshot="5bb50723e3a1edcf9b78ef50ff053d00.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -715,7 +717,7 @@
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(3)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248.8" sap2010:WorkflowViewState.IdRef="NClick_82" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(3)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248" sap2010:WorkflowViewState.IdRef="NClick_82" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="1399, 660, 89, 42" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' /&gt;&lt;ctrl name=' Entfernen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="0ba7ecb8-a60a-49a6-a0c7-6b11b066d02b" InformativeScreenshot="9cd78d51fd73b2631a40d5eeb327ff21.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -750,7 +752,7 @@
                   </Sequence>
                 </uix:NCheckState.IfExists>
                 <uix:NCheckState.IfNotExists>
-                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="552,68.8" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="554,67" sap2010:WorkflowViewState.IdRef="Sequence_47">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1009,29 +1011,29 @@
                 </uix:NCheckState.Target>
               </uix:NCheckState>
             </Sequence>
-            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="587.2,4840.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="590,5023" sap2010:WorkflowViewState.IdRef="Sequence_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="520,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="Rechte werden eingetragen..">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522,122" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="Rechte werden eingetragen..">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </WriteLine>
-              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="520,2350.4" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="522,2532" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="417.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="Gruppe(n) werden hinzugefügt.." />
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="418,122" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="Gruppe(n) werden hinzugefügt.." />
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1132, 177, 174, 61" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen' role='page tab' /&gt;&lt;ctrl name='Berechtigungen' role='link' /&gt;" Guid="a4df58b3-93bf-4da4-9acf-91032c93abd4" InformativeScreenshot="4701f4f456fa7d59b5e57e5590c57143.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1049,7 +1051,7 @@
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_46" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_46" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="865, 383, 979, 35" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Gruppen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="a93183df-5ce0-439b-b2ac-715c3e8cb4c1" InformativeScreenshot="ddd1970f6702e54417465f161a679287.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1067,7 +1069,7 @@
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hinzufügen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_47" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hinzufügen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_47" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1704, 457, 138, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Hinzufügen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="5588614b-882f-43e4-a4da-04722c8d3523" InformativeScreenshot="a587d127bf3c7cd3434df0c68e089e66.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1085,39 +1087,44 @@
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="417.6,924.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="418,1110" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,794.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,980" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382.4,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[&quot;Gruppe wird ausgewählt: &quot; &amp; currentItem.ToString]" />
-                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Bezeichnu…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[currentItem.ToString]" Version="V4">
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382,122" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[&quot;Gruppe wird ausgewählt: &quot; &amp; currentItem.ToString]" />
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Bezeichnu…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,240" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[currentItem.ToString]" Version="V4">
                           <uix:NTypeInto.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="760, 309, 405, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Bezeichnung' role='editable text' /&gt;" Guid="27e5f606-3e2f-4da9-807e-9a75c797fdd2" InformativeScreenshot="933359a00fc00503ec987af20282a3f8.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NTypeInto.Target>
                         </uix:NTypeInto>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,189.6" sap2010:WorkflowViewState.IdRef="NClick_86" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,189" sap2010:WorkflowViewState.IdRef="NClick_86" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="1534, 373, 67, 42" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name=' Suchen' role='menu item' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="67a76199-4682-42a7-9395-478efb525c77" InformativeScreenshot="0c0ddbf147a39fad6d3db691b90a873e.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NClick_87" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,189" sap2010:WorkflowViewState.IdRef="NClick_87" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="772, 583, 40, 41" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row KVR-I-31-Parkausweise erstellt-eugen-22.01.2026 Aktiv' matching:name='fuzzy' fuzzylevel:name='0.0' role='outline item' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='cell' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="bc2592a0-53b9-48f7-abe6-fa25d3172bc4" InformativeScreenshot="b33b7bf2fc1f353ef38b4c40a7ebf00f.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'KVR-III-32-Fundbüro'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,180" sap2010:WorkflowViewState.IdRef="NClick_91" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="751, 307, 424, 45" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl idx='15' role='grouping' /&gt;" Guid="f1ecfc9e-982b-457c-96e7-c3cf47e760c3" InformativeScreenshot="9558f96b6989d480150dabb44b522584.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEach.Body>
                 </ui:ForEach>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Auswahl übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_50" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Auswahl übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_50" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1408, 916, 229, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name=' Auswahl übernehmen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="11b465d1-0db9-4dc5-9bcc-3e85b7ccba18" InformativeScreenshot="e945a5bec9b1564abcec330c59593b28.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1135,7 +1142,7 @@
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417.6,180.8" sap2010:WorkflowViewState.IdRef="NClick_51" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,180" sap2010:WorkflowViewState.IdRef="NClick_51" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="845, 369, 999, 65" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Gruppen' role='push button' automationid='' matching:name='fuzzy' fuzzylevel:name='0.0' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Gruppen' /&gt;" Guid="8b9cfd5e-26bf-4764-a19b-8e99cd8ea7f1" InformativeScreenshot="a08eec08bd9527e21b6f30edc0728d61.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                       <uix:TargetAnchorable.Anchors>
@@ -1147,15 +1154,15 @@
                   </uix:NClick.Target>
                 </uix:NClick>
               </Sequence>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,2284.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="522,2286" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignorierte Aktivitäten" sap:VirtualizedContainerService.HintSize="484.8,2183.2" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                  <Sequence DisplayName="Ignorierte Aktivitäten" sap:VirtualizedContainerService.HintSize="486,2184" sap2010:WorkflowViewState.IdRef="Sequence_58">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Rollen hinzufügen" sap:VirtualizedContainerService.HintSize="451.2,2123.2" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                    <Sequence DisplayName="Rollen hinzufügen" sap:VirtualizedContainerService.HintSize="452,2124" sap2010:WorkflowViewState.IdRef="Sequence_35">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="sc:IEnumerable" Name="roles" />
                       </Sequence.Variables>
