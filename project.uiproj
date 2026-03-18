@@ -1,0 +1,6 @@
+{
+  "Name": "Lunatec_Queue_Windows",
+  "ProjectType": "Process",
+  "Description": "Modified Robotic Enterprise Framework ",
+  "MainFile": "Main.xaml"
+}
