@@ -167,7 +167,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1283,14200" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1283,15998" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Date" />
       <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
@@ -320,9 +320,7 @@
           <OutArgument x:TypeArguments="x:String">[LDAP_Kennung]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(Job_SNOW_Ticketinfos("requested_for")("email").ToString.Contains("@"),
-   Job_SNOW_Ticketinfos("requested_for")("email").ToString.Split("@"c)(0),
-   Job_SNOW_Ticketinfos("requested_for")("email").ToString)]</InArgument>
+          <InArgument x:TypeArguments="x:String">[Job_SNOW_Ticketinfos("requested_for")("userId").ToString]</InArgument>
         </Assign.Value>
       </Assign>
       <Assign sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -357,13 +355,13 @@ ToArray()]</InArgument>
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="626,10949" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="626,12747" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="624,10703" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="624,12501" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Default="0" Name="get_user_row" />
             </Sequence.Variables>
@@ -373,7 +371,7 @@ ToArray()]</InArgument>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="590,5616" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="590,7285" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -431,15 +429,15 @@ ToArray()]</InArgument>
                   </uix:VerifyExecutionTypeIntoOptions>
                 </uix:NTypeInto.VerifyOptions>
               </uix:NTypeInto>
-              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="556,4726" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Timeout="3" Version="V4">
+              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="556,6395" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                 <uix:NCheckState.IfExists>
-                  <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="554,4319" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                  <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="554,4701" sap2010:WorkflowViewState.IdRef="Sequence_46">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Rechte entziehen" sap:VirtualizedContainerService.HintSize="520,4255" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                    <Sequence DisplayName="Rechte entziehen" sap:VirtualizedContainerService.HintSize="520,4637" sap2010:WorkflowViewState.IdRef="Sequence_49">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Boolean" Name="counter_is_valid" />
                         <Variable x:TypeArguments="x:Int32" Default="0" Name="counter" />
@@ -457,10 +455,24 @@ ToArray()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </WriteLine>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,198" sap2010:WorkflowViewState.IdRef="NClick_72" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="[UiPath.UIAutomationNext.Enums.NScrollDirection.Right]" DisplayName="Mouse Scroll" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,230" sap2010:WorkflowViewState.IdRef="NMouseScroll_1" InteractionMode="HardwareEvents" MovementUnits="3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5" />
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,270" sap2010:WorkflowViewState.IdRef="NClick_72" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
-                          <uix:TargetAnchorable DesignTimeRectangle="1824, 557, 40, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row *' role='outline item' /&gt;&lt;ctrl name='  ' role='cell' /&gt;&lt;ctrl name='  ' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="076104a4-68d3-4e45-b40a-788e10515fad" InformativeScreenshot="2f83a6f412dccf4cc2479e27c5808453.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                          <uix:TargetAnchorable DesignTimeRectangle="1821, 555, 45, 45" ElementVisibilityArgument="Interactive" Guid="e53077f9-11fe-4893-bbf2-7601bc0098c2" ImageAccuracyArgument="1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEfSURBVGhD7ddNaoNQFIZhIRsJZJYdhOyidJSdhC4gYAbdQ+mge+gkZOA81JmTRCGhIK000+oJn0QhhYJ6bz69cF44gjrw8Q/Uk2tRFEkcx9XqIIMvCALxqg1OobFwbeorHYahJElye2oDCz5FM1I0K0WzUjQrRbOio/enb3l730lRFH93NY6KBni6eJbR/En8121nOBUdJWmJ9mZLIzgVjaqrbQKno5EpvBc0MoH3hkZd4a3Rv3kun19nOaY/Vib4OMj4wW8Fb43GgSaP6/Ig95gm8EGiVy+b8o7+V2u0k4+HzWgvoq26glEvaBMwoqNNwYiKtgFGVHT1lWcCRlQ0cu4nwFaKZqVoVopmpWhWimZVo7HAuFKJzrJMMK4E9AVqxjQ7D2bIGgAAAABJRU5ErkJggg==" InformativeScreenshot="ca62c44cab5356fbe233a2118c33cb54.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Image" Version="V6" WaitForReadyArgument="Interactive" />
                         </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="Verifizierungsziel" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="845, 643, 121, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Benutzer Neue Ergebnisse verfügbar Bearbeiten' role='pane' /&gt;&lt;ctrl name='Benutzer' role='grouping' /&gt;" Guid="f4cd7b60-dff1-409c-ac71-0bdfb6ef9642" InformativeScreenshot="7abba7cb59c1f459b95f9aff62df8422.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                            </uix:VerifyExecutionOptions.Target>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
                       </uix:NClick>
                       <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,270" sap2010:WorkflowViewState.IdRef="NClick_73" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
@@ -480,7 +492,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <Sequence DisplayName="Gruppen entfernen" sap:VirtualizedContainerService.HintSize="486,1952" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                      <Sequence DisplayName="Gruppen entfernen" sap:VirtualizedContainerService.HintSize="486,1964" sap2010:WorkflowViewState.IdRef="Sequence_50">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -505,9 +517,9 @@ ToArray()]</InArgument>
                             </uix:VerifyExecutionOptions>
                           </uix:NClick.VerifyOptions>
                         </uix:NClick>
-                        <uix:NCheckState DisplayName="Check App State 'Gruppen'" EnableIfNotExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1321" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NCheckState DisplayName="Check App State 'Gruppen'" EnableIfNotExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1333" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NCheckState.IfExists>
-                            <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,980" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                            <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,992" sap2010:WorkflowViewState.IdRef="Sequence_52">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -520,7 +532,7 @@ ToArray()]</InArgument>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </WriteLine>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,266" sap2010:WorkflowViewState.IdRef="NClick_75" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="NClick_75" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="866, 534, 40, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Select All Sort by Bezeichnung Sort by Kommentar Sort by Status' role='outline item' /&gt;&lt;ctrl name='Select All' role='column header' /&gt;&lt;ctrl name='Select All' role='grouping' /&gt;&lt;ctrl role='editable text' /&gt;" Guid="5cbedcef-c3a7-4dd0-9644-744f9b7d4339" InformativeScreenshot="d1e979be9920d500e2f055bfb9ec3258.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -538,7 +550,7 @@ ToArray()]</InArgument>
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,266" sap2010:WorkflowViewState.IdRef="NClick_76" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="NClick_76" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable ContentHash="HKxPdtwdjUG4jDGWrsZSAQ" DesignTimeRectangle="1322, 458, 102, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Entfernen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="19ed2ea9-0ef7-428b-9756-c654a52a4f57" InformativeScreenshot="84eeaeff4d87f17c0b2d8e8283562316.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/9mQ82UveiU2bCofRrzqcyA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
@@ -564,10 +576,10 @@ ToArray()]</InArgument>
                               </uix:NClick>
                               <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,261" sap2010:WorkflowViewState.IdRef="NClick_77" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
-                                  <uix:TargetAnchorable DesignTimeRectangle="1399, 660, 89, 42" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Entfernen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Entfernen' /&gt;" Guid="b3a34fd9-f12a-4f5b-9003-e0d224628130" InformativeScreenshot="47641df2d808b8d21a1b35dfbfe892f3.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
+                                  <uix:TargetAnchorable DesignTimeRectangle="1399, 913, 89, 41" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu *' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Entfernen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Entfernen' /&gt;" Guid="b3a34fd9-f12a-4f5b-9003-e0d224628130" ImageAccuracyArgument="1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAtCAYAAADMU2cCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQeSURBVHhe7ZvZaxNRFIf7lwgqSKEuVdRqFKu27htYd3EF0eK+i4ggqA/ii4oVrRuC4IILbrgiiiil7uJCk8nSJJqYpEk6eT/yO8MdbzNNYWLs1XIfPkLO3c58M733TKBlLb3KSdO9lOUHNH+fslwuR5ruRUtXgJauAC1dAVq6ArR0BWjpCtDSFaClK0BLV4CWrgAtXQFaugL+KelZr0HhNRvI26+SWnpXUPzkGUefnoBDevL2PcdPkTJozx9TCrI+g/w103gNSPePHE/xE42Ofj2BbpNuZrKUuHqDgjPmUPLeA0d74tJVnt+oGkvZL98c7T2JgtKNUbWUDQQdA4rF/Jmg0NwlBW9c7EgDt6EP+ua39yS0dAUULR1t6IO+iZt3KHH5Gu/DPHbYGPp54SLlTJP7CqH5QHDbsxfk7T/M0YZYuqnZWs80KXn3PgWnziZvnwo+ZAMTZlLqyVN7DRDZsI3H4hNtyMc3aASlX7/luTAnaHv+gmLHTpCv0sP9/dWTKfXgseMa28MRiu7aS76BVVZO5UMoumcfmfF4UR4EJZEenD6HvH0H8H6MxDjBfpWUvHWX+8ZPnye/p8aqSnqVk2+wh/yjailcv5FSL5soMGnW7wvDIeqp4Vj67XtOOHa0gUWjLTR/KZ8LkM9r3Lhl5ySkB6fVcS7yzRPSfeWDKVA73T6s7ZwqPZRufvP7+lq85B83xbopI8dTeGW9fZNCC5aRGYu59iAoKL0z5BshL4bkxOHXHv1OwbpFHG9dtY4PUMSL3V5SD59w4lgr8/6jHcehjAtExdMeauWYkA4im3d2mEdI5zXmL+U8+To+fyX/mIkc/3HgkJVrMkmtK9ZYsYOHycxkrHgsRsG6xRyPN56zxrv0AEoiHZWHPEf8+CmHwKKkmyZFNu3gONrl/mJ9PLnYLhCTn3RsDXJ/+UkX/QXRLbt4HMbLfY3RtZQ1/J3mKUS69QAKSnezveRLFHP8qXR5TFeI+eQ9PX9+eU+3z4q8tcW4rh48gcjTrQfw30jHZ3Tb7k4Re3GppWMPj2zc7lgP4CA2UynXHsA/LR3bS3jtFo6L/bYrSiW97VUTeSuGklFVTZmvXb+oufUAlEjH4ZRfRnUqHQfmletcueCpS91/1GFc+s07+nH4iP29VNJxYAZmzuMYbrpcIuKQjTc0chmK7249gILSCyESc72YdChCImpYlGGivZB0XGRk/VZ7fVFu4lPOB5RKOsBhK6odUcaKsleew7WHbpWOMT6DQvOW2C844fpNvC+irZB0wE/XqbNcTWAc+hnDq+n73v0d/hpLKR1kPnyi1uWrO9TcwdkL+UUtl7VKwGI8OKRr/j5augK0dAVo6QrQ0hWgpStAS1eAlq4ALV0BWroCtHQFaOkK0NIVoP9jWgFaugJ+ARPDn0MGaOozAAAAAElFTkSuQmCC" InformativeScreenshot="c0c726c88afc8e91dfc956327fa7327b.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V6" WaitForReadyArgument="None">
                                     <uix:TargetAnchorable.Anchors>
                                       <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                        <uix:Target DesignTimeRectangle="1249, 660, 100, 42" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Abbrechen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Abbrechen' /&gt;" Guid="d03fb4f1-8a75-4959-ae6c-33b14aff10a2" SearchSteps="FuzzySelector" />
+                                        <uix:Target DesignTimeRectangle="1249, 913, 100, 41" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu *' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Abbrechen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Abbrechen' /&gt;" Guid="d03fb4f1-8a75-4959-ae6c-33b14aff10a2" SearchSteps="FuzzySelector" />
                                       </scg:List>
                                     </uix:TargetAnchorable.Anchors>
                                   </uix:TargetAnchorable>
@@ -644,14 +656,14 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <Sequence DisplayName="Rollen entfernen" sap:VirtualizedContainerService.HintSize="486,1347" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                      <Sequence DisplayName="Rollen entfernen" sap:VirtualizedContainerService.HintSize="486,1415" sap2010:WorkflowViewState.IdRef="Sequence_51">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NCheckState DisplayName="Check App State 'Rollen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1264" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                        <uix:NCheckState DisplayName="Check App State 'Rollen'" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1324" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                           <uix:NCheckState.IfExists>
                             <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="450,91" sap2010:WorkflowViewState.IdRef="Sequence_54">
                               <sap:WorkflowViewStateService.ViewState>
@@ -662,14 +674,14 @@ ToArray()]</InArgument>
                             </Sequence>
                           </uix:NCheckState.IfExists>
                           <uix:NCheckState.IfNotExists>
-                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,944" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                            <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="450,992" sap2010:WorkflowViewState.IdRef="Sequence_55">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_31" Text="Rollen werden entfernt." />
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Bezeichnung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_80" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,127" sap2010:WorkflowViewState.IdRef="WriteLine_31" Text="Rollen werden entfernt." />
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Bezeichnung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="NClick_80" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="866, 473, 40, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All Sort by Bezeichnung Sort by Verfahren Sort by Komment*' role='outline item' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All' role='column header' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select All' role='grouping' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='editable text' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' /&gt;" Guid="c1368c39-4129-4096-90d4-946599281278" InformativeScreenshot="2d72d33f41765df501e9d847da100820.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
                                     <uix:TargetAnchorable.Anchors>
@@ -693,17 +705,17 @@ ToArray()]</InArgument>
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NClick_81" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="NClick_81" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
                                   <uix:TargetAnchorable DesignTimeRectangle="1591, 563, 102, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Entfernen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="4883f3a0-e590-4d56-bb6f-46b13c5244be" InformativeScreenshot="5bb50723e3a1edcf9b78ef50ff053d00.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                 </uix:NClick.Target>
                                 <uix:NClick.VerifyOptions>
-                                  <uix:VerifyExecutionOptions DisplayName="Element 'Element 'Sind Sie sicher, dass S…'(1)'" Mode="Appears">
+                                  <uix:VerifyExecutionOptions DisplayName="Verifizierungsziel" Mode="Appears">
                                     <uix:VerifyExecutionOptions.Retry>
                                       <InArgument x:TypeArguments="x:Boolean" />
                                     </uix:VerifyExecutionOptions.Retry>
                                     <uix:VerifyExecutionOptions.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="860, 368, 670, 351" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' /&gt;" Guid="3df1939f-ad84-44ad-aa53-20d2eb0d832c" InformativeScreenshot="2e1074964a7e761fa0edbb5d0b70b580.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="865, 900, 660, 66" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende 322 Zuordnungen zu Benutzer *' role='grouping' /&gt;&lt;ctrl idx='4' role='grouping' /&gt;" Guid="0a37659a-17c7-417e-aa7f-e99fb50e5267" ImageBase64="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" InformativeScreenshot="a4ded46eb3353829c788409ac02d2f35.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector, Image" Version="V6" WaitForReadyArgument="None" />
                                     </uix:VerifyExecutionOptions.Target>
                                     <uix:VerifyExecutionOptions.Timeout>
                                       <InArgument x:TypeArguments="x:Double" />
@@ -711,17 +723,23 @@ ToArray()]</InArgument>
                                   </uix:VerifyExecutionOptions>
                                 </uix:NClick.VerifyOptions>
                               </uix:NClick>
-                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(3)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248" sap2010:WorkflowViewState.IdRef="NClick_82" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Entfernen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,261" sap2010:WorkflowViewState.IdRef="NClick_93" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                                 <uix:NClick.Target>
-                                  <uix:TargetAnchorable DesignTimeRectangle="1399, 660, 89, 42" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu Benutzer Buchart*' role='grouping' /&gt;&lt;ctrl name=' Entfernen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="0ba7ecb8-a60a-49a6-a0c7-6b11b066d02b" InformativeScreenshot="9cd78d51fd73b2631a40d5eeb327ff21.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                                  <uix:TargetAnchorable DesignTimeRectangle="1399, 913, 89, 41" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu *' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Entfernen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Entfernen' /&gt;" Guid="b3a34fd9-f12a-4f5b-9003-e0d224628130" ImageAccuracyArgument="1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAtCAYAAADMU2cCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQeSURBVHhe7ZvZaxNRFIf7lwgqSKEuVdRqFKu27htYd3EF0eK+i4ggqA/ii4oVrRuC4IILbrgiiiil7uJCk8nSJJqYpEk6eT/yO8MdbzNNYWLs1XIfPkLO3c58M733TKBlLb3KSdO9lOUHNH+fslwuR5ruRUtXgJauAC1dAVq6ArR0BWjpCtDSFaClK0BLV4CWrgAtXQFaugL+KelZr0HhNRvI26+SWnpXUPzkGUefnoBDevL2PcdPkTJozx9TCrI+g/w103gNSPePHE/xE42Ofj2BbpNuZrKUuHqDgjPmUPLeA0d74tJVnt+oGkvZL98c7T2JgtKNUbWUDQQdA4rF/Jmg0NwlBW9c7EgDt6EP+ua39yS0dAUULR1t6IO+iZt3KHH5Gu/DPHbYGPp54SLlTJP7CqH5QHDbsxfk7T/M0YZYuqnZWs80KXn3PgWnziZvnwo+ZAMTZlLqyVN7DRDZsI3H4hNtyMc3aASlX7/luTAnaHv+gmLHTpCv0sP9/dWTKfXgseMa28MRiu7aS76BVVZO5UMoumcfmfF4UR4EJZEenD6HvH0H8H6MxDjBfpWUvHWX+8ZPnye/p8aqSnqVk2+wh/yjailcv5FSL5soMGnW7wvDIeqp4Vj67XtOOHa0gUWjLTR/KZ8LkM9r3Lhl5ySkB6fVcS7yzRPSfeWDKVA73T6s7ZwqPZRufvP7+lq85B83xbopI8dTeGW9fZNCC5aRGYu59iAoKL0z5BshL4bkxOHXHv1OwbpFHG9dtY4PUMSL3V5SD59w4lgr8/6jHcehjAtExdMeauWYkA4im3d2mEdI5zXmL+U8+To+fyX/mIkc/3HgkJVrMkmtK9ZYsYOHycxkrHgsRsG6xRyPN56zxrv0AEoiHZWHPEf8+CmHwKKkmyZFNu3gONrl/mJ9PLnYLhCTn3RsDXJ/+UkX/QXRLbt4HMbLfY3RtZQ1/J3mKUS69QAKSnezveRLFHP8qXR5TFeI+eQ9PX9+eU+3z4q8tcW4rh48gcjTrQfw30jHZ3Tb7k4Re3GppWMPj2zc7lgP4CA2UynXHsA/LR3bS3jtFo6L/bYrSiW97VUTeSuGklFVTZmvXb+oufUAlEjH4ZRfRnUqHQfmletcueCpS91/1GFc+s07+nH4iP29VNJxYAZmzuMYbrpcIuKQjTc0chmK7249gILSCyESc72YdChCImpYlGGivZB0XGRk/VZ7fVFu4lPOB5RKOsBhK6odUcaKsleew7WHbpWOMT6DQvOW2C844fpNvC+irZB0wE/XqbNcTWAc+hnDq+n73v0d/hpLKR1kPnyi1uWrO9TcwdkL+UUtl7VKwGI8OKRr/j5augK0dAVo6QrQ0hWgpStAS1eAlq4ALV0BWroCtHQFaOkK0NIVoP9jWgFaugJ+ARPDn0MGaOozAAAAAElFTkSuQmCC" InformativeScreenshot="c0c726c88afc8e91dfc956327fa7327b.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V6" WaitForReadyArgument="None">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="1249, 913, 100, 41" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sind Sie sicher, dass Sie folgende Zuordnung zu *' role='grouping' fuzzylevel:name='0.0' /&gt;&lt;ctrl name=' Abbrechen' role='push button' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='grouping' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Abbrechen' /&gt;" Guid="d03fb4f1-8a75-4959-ae6c-33b14aff10a2" SearchSteps="FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
                                 </uix:NClick.Target>
                                 <uix:NClick.VerifyOptions>
-                                  <uix:VerifyExecutionOptions DisplayName="Element 'Element 'Zuordnung zu Benutzer Z…'(1)'" Mode="Appears">
+                                  <uix:VerifyExecutionOptions DisplayName="Element 'Element 'Zuordnung zu Benutzer Z…''" Mode="Appears">
                                     <uix:VerifyExecutionOptions.Retry>
                                       <InArgument x:TypeArguments="x:Boolean" />
                                     </uix:VerifyExecutionOptions.Retry>
                                     <uix:VerifyExecutionOptions.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="980, 134, 430, 154" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl role='alert' /&gt;" Guid="50a62d36-414c-45a1-90d1-e9a815fc6a06" InformativeScreenshot="f6d1e3b834cf54c5baa290b9909240c9.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="980, 134, 430, 154" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl role='alert' /&gt;" Guid="016831f4-6aff-44be-ba04-89fcb270f917" InformativeScreenshot="5e4d175be8bcc73317b18e3f9b2b52da.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                                     </uix:VerifyExecutionOptions.Target>
                                     <uix:VerifyExecutionOptions.Timeout>
                                       <InArgument x:TypeArguments="x:Double" />
@@ -746,14 +764,14 @@ ToArray()]</InArgument>
                   </Sequence>
                 </uix:NCheckState.IfExists>
                 <uix:NCheckState.IfNotExists>
-                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="554,67" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="554,1354" sap2010:WorkflowViewState.IdRef="Sequence_47">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Mandant - Nutzer hinzufügen" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <Sequence DisplayName="Mandant - Nutzer hinzufügen" sap:VirtualizedContainerService.HintSize="450,61" sap2010:WorkflowViewState.IdRef="Sequence_48">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="userTableRow" />
                       </Sequence.Variables>
@@ -763,14 +781,14 @@ ToArray()]</InArgument>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_27" Text="Nutzer existiert nicht. - Wird angelegt.">
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,123" sap2010:WorkflowViewState.IdRef="WriteLine_27" Text="Nutzer existiert nicht. - Wird angelegt.">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </WriteLine>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Mandanten'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_64" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Mandanten'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_64" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable ContentHash="WFcdKeitjU-69sciE5VO2Q" DesignTimeRectangle="550, 286, 102, 30" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Navigation' role='grouping' /&gt;&lt;ctrl name='Mandanten' role='outline item' /&gt;&lt;ctrl name='Mandanten' role='cell' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="887babd3-1ba5-41e4-8f38-87f93a804644" InformativeScreenshot="1febce8ad52c727714a3c5ad72d96f5f.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/AgZtRbB9VUaaksfBh0RnaA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -788,7 +806,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_65" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'grouping(2)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_65" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable ContentHash="w0zfmzBJnUmf8MvbaV01Rg" DesignTimeRectangle="1824, 493, 40, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row e01 Aktiv ' role='outline item' /&gt;&lt;ctrl name='  ' role='cell' /&gt;&lt;ctrl name='  ' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="2b13900f-35d1-44d3-9792-f3e7ea73fdfe" InformativeScreenshot="0ab6a1b5d370c44cc66d2240ab91a4b0.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/4wlLuqxabUqBXGGMMQ573Q" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -806,7 +824,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Externe Systeme'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_66" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Externe Systeme'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_66" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable ContentHash="ospaGOCp5UisjJW43PtcNg" DesignTimeRectangle="1238, 177, 180, 61" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Externe Systeme' role='page tab' /&gt;&lt;ctrl name='Externe Systeme' role='link' /&gt;" Guid="7ad2f2a4-275a-4551-928c-5b7848b4e28e" InformativeScreenshot="e5e5dcbf33a04fb1ab1c83d8194d50e6.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/qZS_ShhgikCDwKr34YNpkA" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -824,7 +842,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_67" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_67" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable ContentHash="tO4IfqgpN0SeooD4FyfoIQ" DesignTimeRectangle="1608, 264, 234, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Externe Systeme Neue Ergebnisse verfügbar Bearbeiten LDAP Verbin*' role='pane' /&gt;&lt;ctrl name=' Benutzer übernehmen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="b647f78e-fedb-4b92-8350-5382f076e3b6" InformativeScreenshot="bd278ffe09c295008172606b65327dbf.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/HXNs7JL3Mk-o8q6AbbQWIg" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -842,7 +860,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Benutzername'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,348" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable ContentHash="oqy2Ngijg0K9_xHMVXqcOQ" DesignTimeRectangle="854, 283, 222, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Benutzername aus LDAP' role='editable text' /&gt;" Guid="cfc09a74-581e-45d7-a70f-92db9ba76045" InformativeScreenshot="de2019dc644ea64da0282c44b215a336.png" Reference="Qc5accxZR0Cjs9vJQ7wFHA/t9e8VOJQ9UarMYfgNlgQRQ" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NTypeInto.Target>
@@ -857,7 +875,19 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionTypeIntoOptions>
                         </uix:NTypeInto.VerifyOptions>
                       </uix:NTypeInto>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_68" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Timeout="60" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_68" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Timeout="60" Version="V4">
+                        <uix:NClick.DelayAfter>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:NClick.DelayAfter>
+                        <uix:NClick.DelayBefore>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:NClick.DelayBefore>
+                        <uix:NClick.InUiElement>
+                          <InArgument x:TypeArguments="ui:UiElement" />
+                        </uix:NClick.InUiElement>
+                        <uix:NClick.OutUiElement>
+                          <OutArgument x:TypeArguments="ui:UiElement" />
+                        </uix:NClick.OutUiElement>
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1763, 345, 102, 46" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name=' Suchen' role='menu item' /&gt;" Guid="862afae7-a0a3-46e3-8e02-683655628d59" InformativeScreenshot="fba4c7836d05f69ac16a22515bf0cb07.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -875,7 +905,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Aktiviert, Aktiv: Ja, N…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_69" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Aktiviert, Aktiv: Ja, N…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_69" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="866, 507, 40, 40" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select All Sort by Benutzername aus LDAP Sort by Externe ID aus *' role='outline item' /&gt;&lt;ctrl name='Select All' matching:name='fuzzy' fuzzylevel:name='0.0' role='column header' /&gt;&lt;ctrl name='Select All' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="cbfdcd36-85f9-4555-b367-d2e11db7837a" InformativeScreenshot="c09d81fa5992ab99db0afde4364a038f.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -893,7 +923,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="NClick_70" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzer übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_70" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1817, 431, 30, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='More options' role='menu item' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="5aa40743-76c9-40ef-ac92-41491f88adb4" InformativeScreenshot="41d37dc5d3f437650a11da92ba876a7b.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -911,12 +941,12 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_71" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,296" sap2010:WorkflowViewState.IdRef="NClick_71" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1595, 534, 265, 50" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Zuordung übernehmen' role='menu item' /&gt;" Guid="9d5afa7a-9564-4ba9-abf8-672799257ac4" InformativeScreenshot="633723bb5ff0385ae1b8bf6d262b5d87.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
                       </uix:NClick>
-                      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_30">
+                      <Assign sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="Assign_30">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Boolean">[exist_LDAPEintrag]</OutArgument>
                         </Assign.To>
@@ -932,7 +962,7 @@ ToArray()]</InArgument>
                         </sap:WorkflowViewStateService.ViewState>
                       </WriteLine>
                     </Sequence>
-                    <Sequence DisplayName="User auswählen" sap:VirtualizedContainerService.HintSize="449.6,953.6" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                    <Sequence DisplayName="User auswählen" sap:VirtualizedContainerService.HintSize="450,1229" sap2010:WorkflowViewState.IdRef="Sequence_59">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="benutzer_email" />
                       </Sequence.Variables>
@@ -942,8 +972,8 @@ ToArray()]</InArgument>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_32" Text="Nutzer wird ausgewählt..." />
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzerverwaltung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257.6" sap2010:WorkflowViewState.IdRef="NClick_89" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,127" sap2010:WorkflowViewState.IdRef="WriteLine_32" Text="Nutzer wird ausgewählt..." />
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Benutzerverwaltung'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="NClick_89" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="119, 239, 278, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Navigation' role='grouping' /&gt;&lt;ctrl name='Benutzer' role='outline item' /&gt;&lt;ctrl name='Benutzer' role='cell' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="1203a4e1-5ec9-4845-bf0f-e3757af7a574" InformativeScreenshot="615e9a64fb094eaeda0d86e8f386acb1.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NClick.Target>
@@ -958,7 +988,7 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Benutzern…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,241.6" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Benutzern…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,250" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[LDAP_Kennung+&quot;[k(enter)]&quot;]" Version="V4">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="1114, 282, 222, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Benutzername' role='editable text' /&gt;" Guid="eda717e7-b2f2-40ba-9ad2-4628a01d3b47" InformativeScreenshot="f6c83f89f885c5cf113bad83791106ca.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                         </uix:NTypeInto.Target>
@@ -973,9 +1003,10 @@ ToArray()]</InArgument>
                           </uix:VerifyExecutionTypeIntoOptions>
                         </uix:NTypeInto.VerifyOptions>
                       </uix:NTypeInto>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,248.8" sap2010:WorkflowViewState.IdRef="NClick_90" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                      <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="[UiPath.UIAutomationNext.Enums.NScrollDirection.Right]" DisplayName="Mouse Scroll" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,230" sap2010:WorkflowViewState.IdRef="NMouseScroll_2" InteractionMode="HardwareEvents" MovementUnits="3" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5" />
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="10" DisplayName="Click 'grouping'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,261" sap2010:WorkflowViewState.IdRef="NClick_92" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                         <uix:NClick.Target>
-                          <uix:TargetAnchorable DesignTimeRectangle="1824, 557, 40, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row *' role='outline item' /&gt;&lt;ctrl name='  ' role='cell' /&gt;&lt;ctrl name='  ' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="076104a4-68d3-4e45-b40a-788e10515fad" InformativeScreenshot="b50e594fd61d6be4bf38aac1f8df7078.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                          <uix:TargetAnchorable DesignTimeRectangle="1821, 555, 45, 45" ElementVisibilityArgument="Interactive" Guid="e53077f9-11fe-4893-bbf2-7601bc0098c2" ImageAccuracyArgument="1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEfSURBVGhD7ddNaoNQFIZhIRsJZJYdhOyidJSdhC4gYAbdQ+mge+gkZOA81JmTRCGhIK000+oJn0QhhYJ6bz69cF44gjrw8Q/Uk2tRFEkcx9XqIIMvCALxqg1OobFwbeorHYahJElye2oDCz5FM1I0K0WzUjQrRbOio/enb3l730lRFH93NY6KBni6eJbR/En8121nOBUdJWmJ9mZLIzgVjaqrbQKno5EpvBc0MoH3hkZd4a3Rv3kun19nOaY/Vib4OMj4wW8Fb43GgSaP6/Ig95gm8EGiVy+b8o7+V2u0k4+HzWgvoq26glEvaBMwoqNNwYiKtgFGVHT1lWcCRlQ0cu4nwFaKZqVoVopmpWhWimZVo7HAuFKJzrJMMK4E9AVqxjQ7D2bIGgAAAABJRU5ErkJggg==" InformativeScreenshot="ca62c44cab5356fbe233a2118c33cb54.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Image" Version="V6" WaitForReadyArgument="Interactive" />
                         </uix:NClick.Target>
                         <uix:NClick.VerifyOptions>
                           <uix:VerifyExecutionOptions DisplayName="Verifizierungsziel" Mode="Appears">
@@ -983,7 +1014,7 @@ ToArray()]</InArgument>
                               <InArgument x:TypeArguments="x:Boolean" />
                             </uix:VerifyExecutionOptions.Retry>
                             <uix:VerifyExecutionOptions.Target>
-                              <uix:TargetAnchorable DesignTimeRectangle="1132, 553, 174, 61" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen' role='page tab' /&gt;&lt;ctrl name='Berechtigungen' role='link' /&gt;" Guid="062c9999-070b-4be4-9480-e2f725828ec9" InformativeScreenshot="28f7ecce2b9f6c106a3eb289bb958b64.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+                              <uix:TargetAnchorable DesignTimeRectangle="845, 643, 121, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Benutzer Neue Ergebnisse verfügbar Bearbeiten' role='pane' /&gt;&lt;ctrl name='Benutzer' role='grouping' /&gt;" Guid="f4cd7b60-dff1-409c-ac71-0bdfb6ef9642" InformativeScreenshot="7abba7cb59c1f459b95f9aff62df8422.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                             </uix:VerifyExecutionOptions.Target>
                             <uix:VerifyExecutionOptions.Timeout>
                               <InArgument x:TypeArguments="x:Double" />
@@ -995,39 +1026,33 @@ ToArray()]</InArgument>
                   </Sequence>
                 </uix:NCheckState.IfNotExists>
                 <uix:NCheckState.Target>
-                  <uix:TargetAnchorable DesignTimeRectangle="866, 557, 40, 41" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row korbinian.zacherl Zacherl Korbinian LDAP Aktiv ' role='outline item' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select Row' role='cell' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select Row' role='grouping' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='check box' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' /&gt;" Guid="591fe868-f43e-4c96-891d-a46ef726e297" InformativeScreenshot="ffe60dd49d39ccd429449a91c59f54ac.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
-                    <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                        <uix:Target DesignTimeRectangle="846, 507, 82, 40" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Sort by Benutzername Sort by Nachname Sort by Vorname Sort by Ty*' role='outline item' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="09146d65-1e7c-4b70-894f-98083df7d73a" SearchSteps="Selector" />
-                      </scg:List>
-                    </uix:TargetAnchorable.Anchors>
-                  </uix:TargetAnchorable>
+                  <uix:TargetAnchorable DesignTimeRectangle="866, 557, 40, 41" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row * Aktiv ' role='outline item' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select Row' role='cell' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Select Row' role='grouping' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl role='check box' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' /&gt;" Guid="1029a1d0-36ab-44cc-a3be-b6fb8419f86d" InformativeScreenshot="6559478cdfdef871cee8e3aa2b80c732.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None" />
                 </uix:NCheckState.Target>
               </uix:NCheckState>
             </Sequence>
-            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="590,5023" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="590,5152" sap2010:WorkflowViewState.IdRef="Sequence_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522,122" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="Rechte werden eingetragen..">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522,127" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="Rechte werden eingetragen..">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </WriteLine>
-              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="522,2532" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="522,2648" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="418,122" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="Gruppe(n) werden hinzugefügt.." />
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="452,127" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="Gruppe(n) werden hinzugefügt.." />
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Berechtigungen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,270" sap2010:WorkflowViewState.IdRef="NClick_45" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1132, 177, 174, 61" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen' role='page tab' /&gt;&lt;ctrl name='Berechtigungen' role='link' /&gt;" Guid="a4df58b3-93bf-4da4-9acf-91032c93abd4" InformativeScreenshot="4701f4f456fa7d59b5e57e5590c57143.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1045,7 +1070,7 @@ ToArray()]</InArgument>
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_46" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Gruppen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,270" sap2010:WorkflowViewState.IdRef="NClick_46" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="865, 383, 979, 35" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name='Gruppen' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="a93183df-5ce0-439b-b2ac-715c3e8cb4c1" InformativeScreenshot="ddd1970f6702e54417465f161a679287.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1063,7 +1088,7 @@ ToArray()]</InArgument>
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hinzufügen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_47" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hinzufügen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,270" sap2010:WorkflowViewState.IdRef="NClick_47" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1704, 457, 138, 41" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Berechtigungen Neue Ergebnisse verfügbar' role='pane' /&gt;&lt;ctrl name=' Hinzufügen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="5588614b-882f-43e4-a4da-04722c8d3523" InformativeScreenshot="a587d127bf3c7cd3434df0c68e089e66.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/korbinian.zacherl SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
@@ -1081,35 +1106,35 @@ ToArray()]</InArgument>
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="418,1110" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="452,1161" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="416,980" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="450,1026" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382,122" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[&quot;Gruppe wird ausgewählt: &quot; &amp; currentItem.ToString]" />
-                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Bezeichnu…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,240" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[currentItem.ToString]" Version="V4">
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,127" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[&quot;Gruppe wird ausgewählt: &quot; &amp; currentItem.ToString]" />
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'editable text Bezeichnu…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,250" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Text="[currentItem.ToString]" Version="V4">
                           <uix:NTypeInto.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="760, 309, 405, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Bezeichnung' role='editable text' /&gt;" Guid="27e5f606-3e2f-4da9-807e-9a75c797fdd2" InformativeScreenshot="933359a00fc00503ec987af20282a3f8.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NTypeInto.Target>
                         </uix:NTypeInto>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,189" sap2010:WorkflowViewState.IdRef="NClick_86" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Suchen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,198" sap2010:WorkflowViewState.IdRef="NClick_86" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="1534, 373, 67, 42" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name=' Suchen' role='menu item' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="67a76199-4682-42a7-9395-478efb525c77" InformativeScreenshot="0c0ddbf147a39fad6d3db691b90a873e.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,189" sap2010:WorkflowViewState.IdRef="NClick_87" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,198" sap2010:WorkflowViewState.IdRef="NClick_87" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="772, 583, 40, 41" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row KVR-I-31-Parkausweise erstellt-eugen-22.01.2026 Aktiv' matching:name='fuzzy' fuzzylevel:name='0.0' role='outline item' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='cell' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="bc2592a0-53b9-48f7-abe6-fa25d3172bc4" InformativeScreenshot="b33b7bf2fc1f353ef38b4c40a7ebf00f.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'KVR-III-32-Fundbüro'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,180" sap2010:WorkflowViewState.IdRef="NClick_91" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'KVR-III-32-Fundbüro'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,189" sap2010:WorkflowViewState.IdRef="NClick_91" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable DesignTimeRectangle="751, 307, 424, 45" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl idx='15' role='grouping' /&gt;" Guid="f1ecfc9e-982b-457c-96e7-c3cf47e760c3" InformativeScreenshot="9558f96b6989d480150dabb44b522584.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
@@ -1118,7 +1143,7 @@ ToArray()]</InArgument>
                     </ActivityAction>
                   </ui:ForEach.Body>
                 </ui:ForEach>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Auswahl übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="418,257" sap2010:WorkflowViewState.IdRef="NClick_50" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Auswahl übernehmen'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,270" sap2010:WorkflowViewState.IdRef="NClick_50" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable DesignTimeRectangle="1408, 916, 229, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name=' Auswahl übernehmen' role='menu item' /&gt;&lt;ctrl idx='3' role='grouping' /&gt;" Guid="11b465d1-0db9-4dc5-9bcc-3e85b7ccba18" InformativeScreenshot="e945a5bec9b1564abcec330c59593b28.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                   </uix:NClick.Target>
