@@ -1269,7 +1269,7 @@
         <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No more Data" sap:VirtualizedContainerService.HintSize="450,853" sap2010:WorkflowViewState.IdRef="Transition_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:PointCollection x:Key="ConnectorLocation">338.83333333333303,322.33333333333303 338.83333333333303,352.33333333333303 93,352.33333333333303 93,329</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">338.83333333333303,322.33333333333303 338.83333333333303,352.333333333333 93,352.333333333333 93,329</av:PointCollection>
               <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
               <x:Int32 x:Key="DestConnectionPointIndex">39</x:Int32>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>

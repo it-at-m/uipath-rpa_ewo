@@ -1,5 +1,5 @@
 {
-  "name": "Lunatec_Queue_Windows",
+  "name": "EWO.Rechte.und.neue.Nutzer",
   "projectId": "ee80749b-3640-4cfb-82f9-a1ecc12887d7",
   "description": "Modified Robotic Enterprise Framework ",
   "main": "Main.xaml",
@@ -16,7 +16,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.10.4.0",
-  "projectVersion": "1.1.4",
+  "projectVersion": "1.2.0",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
