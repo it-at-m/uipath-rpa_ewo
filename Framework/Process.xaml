@@ -167,7 +167,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1281,19988" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1079,20111" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Date" />
       <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
@@ -238,7 +238,7 @@
               <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">2</InArgument>
+              <InArgument x:TypeArguments="x:String">3</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -304,6 +304,7 @@
         </Sequence>
       </If.Else>
     </If>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="632,123" sap2010:WorkflowViewState.IdRef="WriteLine_33" Text="[Job_SNOW_Ticketinfos(&quot;variables&quot;).ToString]" />
     <Sequence DisplayName="getting data from JSON" sap:VirtualizedContainerService.HintSize="632,992" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="filepath_and_name" />
@@ -329,7 +330,7 @@
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[Job_SNOW_Ticketinfos("variables").
-Where(Function(v) v("name").ToString = "Gruppe (EWO)").
+Where(Function(v) v("name").ToString = "Benötigte Rollen / Gruppen").
 First()("value").ToString.
 Split(","c).
 Select(Function(x) x.Trim).
@@ -978,7 +979,7 @@ ToArray()]</InArgument>
                                 <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
                               </ui:AssignOperation.To>
                               <ui:AssignOperation.Value>
-                                <InArgument x:TypeArguments="x:String">2</InArgument>
+                                <InArgument x:TypeArguments="x:String">3</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
                           </scg:List>
@@ -1198,7 +1199,7 @@ ToArray()]</InArgument>
                         </uix:NClick>
                         <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="492,198" sap2010:WorkflowViewState.IdRef="NClick_87" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
                           <uix:NClick.Target>
-                            <uix:TargetAnchorable DesignTimeRectangle="772, 583, 40, 41" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row KVR-I-31-Parkausweise erstellt-eugen-22.01.2026 Aktiv' matching:name='fuzzy' fuzzylevel:name='0.0' role='outline item' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='cell' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="bc2592a0-53b9-48f7-abe6-fa25d3172bc4" InformativeScreenshot="b33b7bf2fc1f353ef38b4c40a7ebf00f.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None" />
+                            <uix:TargetAnchorable DesignTimeRectangle="677, 491, 33, 33" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row *' matching:name='fuzzy' fuzzylevel:name='0.0' role='outline item' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='cell' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="bc2592a0-53b9-48f7-abe6-fa25d3172bc4" InformativeScreenshot="879088e270bb86b7b5d2bb19178599a1.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
                         <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'KVR-III-32-Fundbüro'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="492,198" sap2010:WorkflowViewState.IdRef="NClick_91" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V5">
@@ -1222,7 +1223,7 @@ ToArray()]</InArgument>
                                   <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
                                 </ui:AssignOperation.To>
                                 <ui:AssignOperation.Value>
-                                  <InArgument x:TypeArguments="x:String">2</InArgument>
+                                  <InArgument x:TypeArguments="x:String">3</InArgument>
                                 </ui:AssignOperation.Value>
                               </ui:AssignOperation>
                             </scg:List>
