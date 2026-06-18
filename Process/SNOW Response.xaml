@@ -50,6 +50,7 @@
       <x:String>UiPath.Web.Activities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Net</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -120,9 +121,10 @@
       <AssemblyReference>System.Net.Requests</AssemblyReference>
       <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
       <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SNOW_Response" sap:VirtualizedContainerService.HintSize="1558.2,1565" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="SNOW_Response" sap:VirtualizedContainerService.HintSize="1023.6000000000001,1700" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="JObj_oauth_token_response_deserialized" />
       <Variable x:TypeArguments="x:String" Name="str_bearer_token" />
@@ -142,9 +144,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Modul SNOW Response gestartet&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="crd_snow_clientid_secret" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secstr_client_secret]" Username="[str_client_id]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,303" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Modul SNOW Response gestartet&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="crd_snow_clientid_secret" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="478.4,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secstr_client_secret]" Username="[str_client_id]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,304.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -198,7 +200,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="[Str_SNOW_get_oauth_token]" sap:VirtualizedContainerService.HintSize="479,102" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[str_oauth_token_response]" TimeoutMS="6000">
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="[Str_SNOW_get_oauth_token]" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[str_oauth_token_response]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -217,8 +219,8 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,122" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JObj_oauth_token_response_deserialized]" JsonString="[str_oauth_token_response]" />
-    <Assign sap:VirtualizedContainerService.HintSize="479,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478.4,122.4" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JObj_oauth_token_response_deserialized]" JsonString="[str_oauth_token_response]" />
+    <Assign sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[str_bearer_token]</OutArgument>
       </Assign.To>
@@ -226,8 +228,8 @@
         <InArgument x:TypeArguments="x:String">[JObj_oauth_token_response_deserialized("access_token").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;{&quot;&quot;state&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_SCTASK_State &amp;&quot;&quot;&quot;, &quot;&quot;comment&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_Comment &amp; &quot;&quot;&quot;}&quot;]" />
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;state&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_SCTASK_State &amp;&quot;&quot;&quot;, &quot;&quot;comment&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_Comment &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="[Str_SNOW_url_close_comment_ticket &amp; str_sys_id &amp; &quot;/close&quot;]" sap:VirtualizedContainerService.HintSize="479,102" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[str_snow_response]" TimeoutMS="6000">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;{&quot;&quot;state&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_SCTASK_State &amp;&quot;&quot;&quot;, &quot;&quot;worknote&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_Comment &amp; &quot;&quot;&quot;}&quot;]" />
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;state&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_SCTASK_State &amp;&quot;&quot;&quot;, &quot;&quot;comment&quot;&quot;: &quot;&quot;&quot; &amp; str_SNOW_Comment &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="[Str_SNOW_url_close_comment_ticket &amp; str_sys_id &amp; &quot;/close&quot;]" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[str_snow_response]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -245,7 +247,7 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <Assign sap:VirtualizedContainerService.HintSize="479,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_str_snow_response]</OutArgument>
       </Assign.To>
@@ -253,6 +255,6 @@
         <InArgument x:TypeArguments="x:String">[str_snow_response]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Modul SNOW Response abgeschlossen&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Modul SNOW Response abgeschlossen&quot;]" />
   </Sequence>
 </Activity>
