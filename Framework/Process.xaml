@@ -168,7 +168,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1281,19820" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1146,20154" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Date" />
       <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
@@ -223,7 +223,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -232,6 +232,14 @@
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="x:String">Ticket eingelesen</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -349,7 +357,7 @@ ToArray()]</InArgument>
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="632,16477" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="e01korbinian.zacherl SYNERGO" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="632,16548" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -360,7 +368,7 @@ ToArray()]</InArgument>
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="630,16231" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="630,16293" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Default="0" Name="get_user_row" />
             </Sequence.Variables>
@@ -370,7 +378,7 @@ ToArray()]</InArgument>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="596,10395" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Benutzer check" sap:VirtualizedContainerService.HintSize="596,10426" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -428,7 +436,7 @@ ToArray()]</InArgument>
                   </uix:VerifyExecutionTypeIntoOptions>
                 </uix:NTypeInto.VerifyOptions>
               </uix:NTypeInto>
-              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="562,9505" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
+              <uix:NCheckState DisplayName="Check App State 'grouping'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="562,9536" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="196ad38a-8138-44f1-970d-55b2f1b3409c" Version="V4">
                 <uix:NCheckState.IfExists>
                   <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="560,4471" sap2010:WorkflowViewState.IdRef="Sequence_46">
                     <sap:WorkflowViewStateService.ViewState>
@@ -769,14 +777,14 @@ ToArray()]</InArgument>
                   </Sequence>
                 </uix:NCheckState.IfExists>
                 <uix:NCheckState.IfNotExists>
-                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="560,4694" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                  <Sequence DisplayName="Ziel wird nicht angezeigt" sap:VirtualizedContainerService.HintSize="560,4725" sap2010:WorkflowViewState.IdRef="Sequence_47">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Mandant - Nutzer hinzufügen" sap:VirtualizedContainerService.HintSize="526,3401" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <Sequence DisplayName="Mandant - Nutzer hinzufügen" sap:VirtualizedContainerService.HintSize="526,3432" sap2010:WorkflowViewState.IdRef="Sequence_48">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="userTableRow" />
                       </Sequence.Variables>
@@ -961,10 +969,10 @@ ToArray()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </WriteLine>
-                      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="492,214" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="492,245" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
                         <ui:MultipleAssign.AssignOperations>
                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
                               <ui:AssignOperation.To>
                                 <OutArgument x:TypeArguments="x:String">[str_snow_kommentar]</OutArgument>
                               </ui:AssignOperation.To>
@@ -972,12 +980,19 @@ ToArray()]</InArgument>
                                 <InArgument x:TypeArguments="x:String">Nutzer wurde aus LDAP übernommen</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
                           </scg:List>
                         </ui:MultipleAssign.AssignOperations>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:MultipleAssign>
@@ -1094,7 +1109,7 @@ ToArray()]</InArgument>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NCheckState>
             </Sequence>
-            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="596,5772" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence DisplayName="Rechte eintragen" sap:VirtualizedContainerService.HintSize="596,5803" sap2010:WorkflowViewState.IdRef="Sequence_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1108,7 +1123,7 @@ ToArray()]</InArgument>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </WriteLine>
-              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="562,3196" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <Sequence DisplayName="Gruppen hinzufügen" sap:VirtualizedContainerService.HintSize="562,3227" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1170,7 +1185,7 @@ ToArray()]</InArgument>
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="528,1700" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="528,1731" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[groups]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
@@ -1181,7 +1196,7 @@ ToArray()]</InArgument>
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="526,1565" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="526,1596" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1203,10 +1218,10 @@ ToArray()]</InArgument>
                             <uix:TargetAnchorable DesignTimeRectangle="677, 491, 33, 33" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;wnd cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='Select Row *' matching:name='fuzzy' fuzzylevel:name='0.0' role='outline item' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='cell' /&gt;&lt;ctrl name='Select Row' matching:name='fuzzy' fuzzylevel:name='0.0' role='grouping' /&gt;&lt;ctrl role='check box' automationid='' /&gt;" Guid="bc2592a0-53b9-48f7-abe6-fa25d3172bc4" InformativeScreenshot="879088e270bb86b7b5d2bb19178599a1.png" ScopeSelectorArgument="&lt;wnd app='java*.exe' cls='SunAwtFrame' title='e01/dv.00001246 SYNERGO' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="492,214" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                        <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="492,245" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
                           <ui:MultipleAssign.AssignOperations>
                             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
                                 <ui:AssignOperation.To>
                                   <OutArgument x:TypeArguments="x:String">[str_snow_kommentar]</OutArgument>
                                 </ui:AssignOperation.To>
@@ -1214,12 +1229,19 @@ ToArray()]</InArgument>
                                   <InArgument x:TypeArguments="x:String">["Gruppe zugeteilt: " &amp; currentItem.ToString]</InArgument>
                                 </ui:AssignOperation.Value>
                               </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
                             </scg:List>
                           </ui:MultipleAssign.AssignOperations>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:MultipleAssign>
@@ -1474,5 +1496,32 @@ ToArray()]</InArgument>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,232" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_snow_kommentar]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">Bearbeitung erfolgreich abgeschlossen</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_snow_sctask_state]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">3</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
   </Sequence>
 </Activity>
