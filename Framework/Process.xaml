@@ -168,7 +168,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1146,20154" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1207.6000000000001,20116.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Date" />
       <Variable x:TypeArguments="x:String" Name="LDAP_Kennung" />
@@ -185,17 +185,17 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="632,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope - Get Ticket Infos" sap:VirtualizedContainerService.HintSize="632,634" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="30.00:00:00">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="632,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope - Get Ticket Infos" sap:VirtualizedContainerService.HintSize="632,632" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="30.00:00:00">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="450,425" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="449.6,424" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Mit diesem Aufruf erfolgt die Abfrage der SNOW-Ticketinfos.&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden &#xA;&#xA;Der Output wird in der Variable &quot;JObj_SNOW_Ticketinfos&quot; gespeichert. Mit dieser kann unabhängig vom Ticket weitergearbeitet werden" DisplayName="GET Ticket Infos - Invoke Workflow File (Process\GET Ticket Infos.xaml)" sap:VirtualizedContainerService.HintSize="416,365" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\GET Ticket Infos.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Mit diesem Aufruf erfolgt die Abfrage der SNOW-Ticketinfos.&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden &#xA;&#xA;Der Output wird in der Variable &quot;JObj_SNOW_Ticketinfos&quot; gespeichert. Mit dieser kann unabhängig vom Ticket weitergearbeitet werden" DisplayName="GET Ticket Infos - Invoke Workflow File (Process\GET Ticket Infos.xaml)" sap:VirtualizedContainerService.HintSize="416,364" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\GET Ticket Infos.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_request_call">[in_Config("Str_SNOW_request_call").ToString()]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_get_oauth_token">[in_Config("Str_SNOW_get_oauth_token").ToString()]</InArgument>
@@ -223,7 +223,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Achtung!&#xA;1. Kommentar ändern&#xA;2. Status wird auf closed complete gesetzt = alles lief korrekt durch" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,240.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -250,17 +250,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - SNOW Response" sap:VirtualizedContainerService.HintSize="632,519" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="3" RetryInterval="00:00:30">
+    <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - SNOW Response" sap:VirtualizedContainerService.HintSize="632,517.6" sap2010:WorkflowViewState.IdRef="RetryScope_6" NumberOfRetries="3" RetryInterval="00:00:30">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence sap2010:Annotation.AnnotationText="Dieser Workflow schließt das Ticket mit den zuvor festgelegten Werten!&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden " DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="450,310" sap2010:WorkflowViewState.IdRef="Sequence_38">
+          <Sequence sap2010:Annotation.AnnotationText="Dieser Workflow schließt das Ticket mit den zuvor festgelegten Werten!&#xA;&#xA;Das Credential &quot;crd_snow_clientid_secret&quot; muss aus dem Test Ordner heraus in den Assets verlinkt werden " DisplayName="Aktion" sap:VirtualizedContainerService.HintSize="449.6,309.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SNOW Response - Invoke Workflow File (Process\SNOW Response.xaml)" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\SNOW Response.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SNOW Response - Invoke Workflow File (Process\SNOW Response.xaml)" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\SNOW Response.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="Out_str_snow_response">[str_snow_response]</OutArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="In_Str_SNOW_get_oauth_token">[in_Config("Str_SNOW_get_oauth_token").ToString()]</InArgument>
@@ -283,20 +283,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="632,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_snow_response]" />
-    <If Condition="[str_snow_response.Contains(&quot;error&quot;)]" sap:VirtualizedContainerService.HintSize="632,415" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="632,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_snow_response]" />
+    <If Condition="[str_snow_response.Contains(&quot;error&quot;)]" sap:VirtualizedContainerService.HintSize="451.2,382.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="Sequence_39">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,181.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[New SystemException(&quot;Abschließen des Tickets fehlgeschlagen. SysID:&quot; &amp; in_TransactionItem.Reference &amp; &quot;SNOW Kommentar:&quot; &amp; str_snow_kommentar)]" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[New SystemException(&quot;Abschließen des Tickets fehlgeschlagen. SysID:&quot; &amp; in_TransactionItem.Reference &amp; &quot;SNOW Kommentar:&quot; &amp; str_snow_kommentar)]" sap:VirtualizedContainerService.HintSize="416,117.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_40">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -305,7 +305,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="632,123" sap2010:WorkflowViewState.IdRef="WriteLine_33" Text="[Job_SNOW_Ticketinfos(&quot;variables&quot;).ToString]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="632,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_33" Text="[Job_SNOW_Ticketinfos(&quot;variables&quot;).ToString]" />
     <Sequence DisplayName="getting data from JSON" sap:VirtualizedContainerService.HintSize="632,992" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="filepath_and_name" />
