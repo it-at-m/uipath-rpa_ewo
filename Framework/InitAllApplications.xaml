@@ -112,7 +112,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1172,2737.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="894.8000000000001,2755.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="str_Password" />
@@ -124,15 +124,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="488,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Test/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="488,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
-    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-K1.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="488,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1538.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V2">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Test/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="488,184.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
+    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-P.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="488,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1546.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="484.8,1288" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="484.8,1292" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>

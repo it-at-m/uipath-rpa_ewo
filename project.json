@@ -1,9 +1,10 @@
 {
-  "name": "EWO.Rechte.und.neue.Nutzer",
+  "name": "EWO.Rechte.und.neue.Nutzer.prod",
   "projectId": "ee80749b-3640-4cfb-82f9-a1ecc12887d7",
   "description": "Modified Robotic Enterprise Framework ",
   "main": "Main.xaml",
   "dependencies": {
+    "LHM_SNow_Lib": "[1.0.1]",
     "UiPath.Excel.Activities": "[2.24.4]",
     "UiPath.Mail.Activities": "[2.2.0-preview]",
     "UiPath.PDF.Activities": "[3.22.1]",
@@ -16,7 +17,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.10.4.0",
-  "projectVersion": "1.2.5",
+  "projectVersion": "1.2.3",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,

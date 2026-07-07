@@ -1,5 +1,5 @@
 {
-  "Name": "EWO.Rechte.und.neue.Nutzer",
+  "Name": "EWO.Rechte.und.neue.Nutzer.prod",
   "ProjectType": "Process",
   "Description": "Modified Robotic Enterprise Framework ",
   "MainFile": "Main.xaml"
