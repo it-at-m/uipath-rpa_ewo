@@ -112,7 +112,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="858,2816.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1268,2820" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="str_Password" />
@@ -123,22 +123,22 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Prod/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="486.4,184.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
-    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-P.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="486.4,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="486.4,1592" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V2">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="rpa006_EWO" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Prod/KVR/rpa006_EWO" sap:VirtualizedContainerService.HintSize="488,186" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_Password]" Username="[str_Username]" />
+    <ui:StartProcess Arguments="/c C:\okprg\okewo\icon\AWR-P.bat" DisplayName="Start Process" FileName="cmd.exe" sap:VirtualizedContainerService.HintSize="488,120" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="C:\okprg\okewo\icon" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Anmeldung" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,1593" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" IsDisplayNameAuto="True" ScopeGuid="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="60" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="484.8,1337.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Ausführen" sap:VirtualizedContainerService.HintSize="486,1338" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Benutzername'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="451.2,1273.6" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="200" Version="V5">
+            <uix:NCheckState DisplayName="Check App State 'Benutzername'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,1274" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="f62f8067-c6f3-4d52-8e73-c3d8ef164990" Timeout="200" Version="V5">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="449.6,752" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
@@ -197,7 +197,7 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="132, 572, 644, 270" FilePath="C:\okprg\okewo\java\jre_64\bin\javaw.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIQSURBVFhHzZbBbtpAEIbtxSlSFYmoh56rvkXftAXbuyGnHvosOUQUBQVoiANRKtoeaImxvX+1DjngsS1n6yoz6DvwyZr97VkWO468AWuI4AYR3CCCG0RwgwhuEMENIrhBBDeIqMGVCzgyKnjzvSnmetPDQPuXQkQNR2qOX9jhJ5CzBrBqwN3++k0KfJ59hzccQZAbrYCIUiKIMMJGJ2irfmSAGDR4kkRU4Klr6OIq/1CxIdFkHQIRFYhwgsxEbCllBkDrDK68haOmZL1nBzS8758jS2NkOkFa+CQ6QYaHEmJo7LDLyu/srT+GG9bsRyJq8Hxzt/dwlPlF38AND/H8uxKWOc5wWcyW15uPF3DDmr1IRAEhv8ELFhB5k5U1rjS/ZVq9wQiOsn6CETrhBNAbZPGfYu/GZYZbPmAT8KtlQLVAN7jHFmZvpcW+rZV1wM5ZhDj5XezXelmP+CiIkFYOpr2yDijkimycBwCvz27RGU6fyQyenB8225f9iOWSBDSnv3s6I9c2QZxOD5vtyzqgCGlA8wQ9VXNm1TGcHTbbl/WIzSuRRnsvB1VlHdCVk3yk/7usR2wO6XfqAmmSAprhOfjEhy9jbNPtY8inv4QW6fWv0A3mZN3GAR21xPFgjd6nS/T6I5z441Z55a/RDa7ouo0DvjREcIMIbhDBDSK4QQQ3iOAGEdwgghtEcIMIZvwF7pCSM+h2T7wAAAAASUVORK5CYII=" InformativeScreenshot="a544ee1863af884f54123c2dad594ec8.png" Selector="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" Version="V2">
+        <uix:TargetApp Area="132, 572, 644, 270" FilePath="C:\okprg\okewo\java\bin\javaw.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIQSURBVFhHzZbBbtpAEIbtxSlSFYmoh56rvkXftAXbuyGnHvosOUQUBQVoiANRKtoeaImxvX+1DjngsS1n6yoz6DvwyZr97VkWO468AWuI4AYR3CCCG0RwgwhuEMENIrhBBDeIqMGVCzgyKnjzvSnmetPDQPuXQkQNR2qOX9jhJ5CzBrBqwN3++k0KfJ59hzccQZAbrYCIUiKIMMJGJ2irfmSAGDR4kkRU4Klr6OIq/1CxIdFkHQIRFYhwgsxEbCllBkDrDK68haOmZL1nBzS8758jS2NkOkFa+CQ6QYaHEmJo7LDLyu/srT+GG9bsRyJq8Hxzt/dwlPlF38AND/H8uxKWOc5wWcyW15uPF3DDmr1IRAEhv8ELFhB5k5U1rjS/ZVq9wQiOsn6CETrhBNAbZPGfYu/GZYZbPmAT8KtlQLVAN7jHFmZvpcW+rZV1wM5ZhDj5XezXelmP+CiIkFYOpr2yDijkimycBwCvz27RGU6fyQyenB8225f9iOWSBDSnv3s6I9c2QZxOD5vtyzqgCGlA8wQ9VXNm1TGcHTbbl/WIzSuRRnsvB1VlHdCVk3yk/7usR2wO6XfqAmmSAprhOfjEhy9jbNPtY8inv4QW6fWv0A3mZN3GAR21xPFgjd6nS/T6I5z441Z55a/RDa7ouo0DvjREcIMIbhDBDSK4QQQ3iOAGEdwgghtEcIMIZvwF7pCSM+h2T7wAAAAASUVORK5CYII=" InformativeScreenshot="a544ee1863af884f54123c2dad594ec8.png" Selector="&lt;wnd app='java*.exe' cls='SunAwtDialog' title='Anmeldung' /&gt;" Version="V2">
           <uix:TargetApp.Arguments>
             <InArgument x:TypeArguments="x:String" />
           </uix:TargetApp.Arguments>
@@ -207,7 +207,7 @@
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <uix:NCheckState DisplayName="Check App State 'Benutzer alt K'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="486.4,691.2" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="120" Version="V4">
+    <uix:NCheckState DisplayName="Check App State 'Benutzer alt K'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="488,692" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="120" Version="V4">
       <uix:NCheckState.IfExists>
         <Sequence DisplayName="Ziel wird angezeigt" sap:VirtualizedContainerService.HintSize="449.6,233.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
